@@ -1,0 +1,27 @@
+selecionados
+-----------------
+1. Diego Mucciolo (https://linkedin.com/in/diegomucciolo/)
+2. Bryann Barbosa (https://linkedin.com/in/bryannbarbosa)
+3. Brenda Gouveia (https://linkedin.com/in/brenda-gomes-gouveia/)
+4. George Nelson  (https://linkedin.com/in/george-nelson-m-046bb11/)
+5. Caio Granado   (https://www.linkedin.com/in/caio-granado-761281233/)
+6. Joao Vitor     (https://www.linkedin.com/in/joaovitorpereirab/)
+
+pesquisa (??)
+----------------
+1. Bryann Barbosa (https://linkedin.com/in/bryannbarbosa)
+2. George Nelson  (https://linkedin.com/in/george-nelson-m-046bb11)
+
+não foram selecionados
+-------------------------
+    possuem interesse um pouco diferente
+    ---------------------------------------
+    1. Davi Horta      (https://linkedin.com/in/davi-hora)
+    2. Lucas Santos    (https://linkedin.com/in/tonnks)
+    3. Marcos Vinicius (https://linkedin/in/marcoscurvina)
+
+    não possuem graduação em CS ou correlatos
+    -------------------------------------------
+    1. Ismael Otávio    (https://linkedin.com/in/ismael-otavio-fernandes-de-oliveira)
+    2. Antonio Anderson (https://www.linkedin.com/in/andersonsilvax/)
+

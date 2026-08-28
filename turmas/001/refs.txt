@@ -1,0 +1,16 @@
+1. Programming Language Pragmatics
+    - Michael Scott
+    - Jonathan Aldrich
+
+2. Practical Foundations for Programming Languages
+    - Robert Harper
+
+3. Type Theory and Formal Proof
+    - Rob Nederpelt
+    - Herman Geuvers
+
+4. Types and Programming Languages
+    - Benjamin Pierce
+
+5. Homotopy Type Theory: Univalent Foundations of Mathematics
+    - Institute for Advanced Study

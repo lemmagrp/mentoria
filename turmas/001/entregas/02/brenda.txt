@@ -1,0 +1,20 @@
+Problema da parada com tempo infinito
+
+Por ser um problema de decisão, isso é que depende de uma resposta sim ou não, poderíamos executar diversos programas e esperar dias, meses ou milhares de anos e ainda assim não conseguir obter um resultado. Se algum programa parar nós conseguiremos a resposta, mas para os outros que não pararem enquanto estamos observando não conseguiremos obter nenhuma resposta. Em resumo : mais tempo não vence a indecidibilidade.
+
+metalinguagens
+
+Metalinguagem é uma linguagem usada para descrever, analisar ou definir outra linguagem (ou a própria linguagem).
+A linguagem-objeto é justamente a linguagem que está sendo estudada, manipulada ou interpretada pela metalinguagem
+
+Indo para o ponto de pensamento, a metalinguagem representa a capacidade de refletirmos sobre o nosso próprio raciocínio, no qual podemos analisar argumentos, identificar falhas no raciocínio e entender como chegamos a determinada conclusão. Dessa forma, a metalinguagem estabelece uma ponte entre o raciocínio lógico e a reflexão crítica, sendo essencial tanto para a filosofia quanto para a matemática, a ciência da computação e o desenvolvimento de linguagens de programação.
+
+Linguagens de alto nível
+
+Uma linguagem de alto nível é uma linguagem de programação feita para ser mais fácil de ler, escrever e entender por pessoas, ficando mais próxima da linguagem humana do que da linguagem do computador.
+
+A lógica matemática assim como o sistema de tipos representam os alicerces das linguagens de programação de alto nível, sendo a lógica responsável pelas estruturas de controle e sistemas de tipo classificam os dados, impõem restrições e como podem ser utilizados. Em compiladores, eles utilizam os dados para verificar consistência semântica do código, detectando erros como operações incompatíveis. Como por exemplo : 1 + "qualquer coisa"
+
+correspondência de Curry-Howard
+
+A correspondência de Curry–Howard é a conexão profunda entre lógica e programação. Quando o compilador verifica que um programa pertence a determinado tipo, ele demonstra que esse programa satisfaz essa especificação. Enquanto que um matemático constrói uma sequência válida de passos até chegar ao teorema. Howard então percebeu que essas duas atividades tem exatamente a mesma forma : São duas formas de verificação formal.

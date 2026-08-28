@@ -1,0 +1,19 @@
+Atividades George Nelson durante o periodo de 13/06 a 29/06
+
+Estou estudando no detalhe o livro "Incompleteness and Computability an Open Introduction to Gödel’s Theorems" (Livro que o Bryann indicou), e montando um resumo para colocar em formato de wiki a posteriori.
+
+Estou fazendo analise deste artigo abaixo, para construcao de um software python para experimentos com Turing Machines
+
+%0 Conference Proceedings
+%T Simulation of a Turing machine on a digital computer
+%A Coffin, Robert W.
+%A Goheen, Harry E.
+%A Stahl, Walter R.
+%B AFIPS '63 (Fall)
+%D 1899
+
+http://bitsavers.informatik.uni-stuttgart.de/pdf/afips/1963-11_%2324.pdf
+
+Eu tinha começado a trabalhar nisto uns 2 anos atras e tive de recuperar minhas anotacoes e artefatos relacionados ao assunto
+
+<<FIM DO REPORT>>

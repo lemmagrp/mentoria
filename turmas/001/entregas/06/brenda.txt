@@ -1,0 +1,71 @@
+Union(x, {y}) == x, sendo que y está em x
+
+(z in x) OU (z in {y})
+
+Como {y} é um conjunto unitário, se z in {y}, então z = y
+
+Se y já está em x, adicionar o conjunto {y} à união não acrescenta nenhum elemento novo.
+
+z = y e (y in x) --> z in x
+
+----------------------------------------------------
+
+y é uma permutação de x, então x == y
+
+Dado um elemento z onde podemos dizer que
+
+(x contém z) --> (y contém z) 
+
+Como y é uma permutação de x, também podemos dizer que:
+
+(y contém z) --> (x contém z)
+
+podemos dizer que z está em ambos conjuntos e eles tem os mesmos valores, temos :
+
+(x ⊆ y) AND (y ⊆ x)
+
+Sendo x = y iguais, logo a condição é verdadeira
+
+O que prova que a permutação não cria elementos novos, apenas muda a ordem.
+
+--------------------------------------------------------
+Prod(x, y) == Prod(y, x)
+
+Dado x={1}, y={2}
+
+x X Y = {(1,2)}
+
+y X x = {(2,1)}
+
+(1,2) != (2,1)
+
+o conjunto em si não liga para a ordem, mas o produto dos conjuntos se importa.
+
+-----------------------------------------
+Coprod(x, y) == Coprod(y, x)
+
+Dado x={1}, y={2}
+
+Coprod(x, y) = {(1,0), (2,1)}
+
+Coprod(y,x) = {(2,0), (1,1)}
+
+Coprod(x, y) != Coprod(y, x)
+
+Portanto, a união disjunta não é comutativa, pois ela mantém a identificação de qual conjunto cada elemento veio.
+
+---------------------------------------
+
+Coprod(x, Empty)
+
+Dado, 
+
+Coprod(x, Empty) = (x X {0}) OU (Empty X {1})
+(x X {0}) OU (Empty X {1})}
+
+Como Empty X {1} = Empty e, 
+
+Como "A OU Empty" = A, logo:
+
+(x X {0}) OU Empty ---> (x X {0})
+

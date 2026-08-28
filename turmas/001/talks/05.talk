@@ -1,0 +1,115 @@
+--------------------------------------
+talk: 005
+title: teoria ingênua de conjuntos II
+--------------------------------------
+
+
+1> lembrando:
+    > linguagem formal:
+        > alfabeto: símbolos `x, y, z`, ...
+            > proposições: p, q, ...
+            > variáveis: x, y, z,
+            > predicados: P, Q, ...
+            > delimitadores: ...
+            > ..
+        > gramática: palavras admissíveis
+            > misturas de símbolos válidas
+
+    > teoria ingênua de conjuntos:
+        > alfabeto:
+            > variáveis (conjuntos): `x, y, z`, ...
+            > proposições: p, q, ...
+            > predicados: P, Q, ...
+            > delimitadores: `{` e `}`
+            > separadores: `,`
+            > relação binária: `in` (`x in y`)
+
+        > gramática:
+            > `{x, y, z, ...}`
+            > `{x, P, q, ...}`
+            > `{x, {x, y}, ...}`
+            > `x in y`
+            > errado:
+                > x in P
+                > x in p
+                > P in x
+                > {x in y, P, q}
+            
+        > axioma (da extensão genérica):
+            > se `P` é predicado:
+                > existe o conjunto `x(P)` de todo `y` tal que `P(y)` é verdadeiro
+                > `x(P) := {x | P(x)}`
+
+        > definição:
+            > sejam `x`, `y` conjuntos:
+                > diz-se que `x` é +igual+ à `y` se:
+                    > dado símbolo `z`:
+                        > z in y iff z in x
+                > escreve-se: `x = y`
+
+        > com axioma da extensão genérica, cai-se em paradoxos como o de Russell.
+
+    > conclusão:
+        > teoria dos conjuntos ingênua __não__ é uma linguagem formal completa.
+        > ainda assim, serve para guiar nossa intuição:
+            > serve como metalinguagem.
+
+> construções:
+    > conjunto vazio:
+        1. seja `P` um predicado que é sempre falso. Seja `p` uma proposição falsa.
+        2. pela axioma, existe o conjunto `x(P) = { x,  P(x) }`
+        3. existe o conjunto que não tem nenhum elemento:
+            > existe `x` tal que `y not in x` para todo `y`.
+            > conjunto vazio:
+                > `{}` ou `Empty`
+                
+    > todo conjunto pode ser construído via um predicado.
+        1. seja `x` um conjunto.
+            2. `P_x(y) := y in x`
+            3. `x(P_x)`?
+                > `x(P_x) := {y, P_x(y)}`
+                >      := {y, y in x}
+            4. `x(P_x) = x`
+
+    > união e interseção:
+        1. sejam `x` e `y` conjuntos.
+        2. sejam `P_x` e `P_y` os predicatos de `x` e `y`
+        3. com operações entre predicados (`and`, `or`):
+            > `A = P_x and P_y`
+                > `A = {z,  (P_x and P_y)(z)}`
+                > A = `{z, P_x(z) and P_y(z)}`
+                > `A = {z, (z in x) and (z in y)}`
+                > definição:
+                    > `A` é chamado de +interseção+ entre `x` e `y`.
+                    > `Inter(x, y)`
+
+            > `B = P_x or P_y`
+                > definição:
+                    > B é chamado de +união+ entre `x` e `y`.
+                    > `Union(x, y)`
+
+    > complemento:
+        1. seja `x` um conjunto.
+        2. seja `P_x` o predicado que o caracteriza.
+        3. `Q := not P_x`
+            > Q = {z, Q(z)}
+            > `Q = {z, (not P_x)(z) }`
+            > `Q = {z, not P_x(z) }`
+            > `Q = {z not (z in x)}`
+            > definição:
+                > Q é o +complemento+ de `x`.
+                > `Compl(x)`
+
+
+-----------------------
+tasks:
+    > provar que para todo `x`:
+        > `Union(x, x) = x`
+        > Union(x, Empty) = x
+        > `Inter(x, x) = x`
+        > Inter(x, Empty) = Empty
+        > Compl(x, x) = Empty
+        > regras de De Morgan
+            > Union(x, Union(y, z)) = Union(Union(x, y), z)
+            > ...
+---------------------

@@ -1,0 +1,56 @@
+
+- linguagens formais (L)
+    - coleção de símbolos (alfabeto, L(A))
+    - palavras admissíveis (gramática, G(A))
+
+- lógica proposicional
+    - alfabeto:
+        - "proposições/afirmações": p1, p2, p3...
+        - "conetivos": NOT, AND, OR
+        - "delimitadores": (, )
+    - gramática:
+        - NOT p1
+        - p1 AND p2
+        - p1 OR p2
+        - (p1 AND (p2 OR p3))
+        - ...
+
+- lógica de primeira ordem (lógica de predicados)
+    - alfabeto:
+        - "variáveis": x, y, z, ...
+        - "constantes": a, b, c, ...
+        - "predicados": p1, p2, p3, ...
+        - "operadores/funções/símbolos funcionais": f(_, _), f(_), f(_,_,_), ...
+            - "número de argumentos" é o 'grau' do símbolo funcional
+        - "delimitadores": (, )
+        - "quantificadores": FORALL, EXISTS <<<< dependem do contexto
+    - gramática
+        - misturas dos símbolos do alfabeto: 'expressões bem formadas/bem postas'
+
+- sistemas dedutivos
+    - pergunta:
+        - dado um contexto no qual é possível associar um significado de "verdade" à determinadas "expressões" gramaticais
+        - como construir o conjunto de tudo o que é verdade a partir de um conjunto básico de "verdades absolutas" e de "regras pré-definidas"?
+
+    - "verdades absolutas" são os "axiomas" da Lógica.
+    - "regras pré-definidas" são "geradores" da gramática (regras de dedução de uma gramática formal)
+
+- perguntas:
+    - se uma expressão p(...) é verdadeiro, então 'NOT p(...)' é falso?
+    - dada expressão p(...), é sempre possível concluir que ou `p(...) é verdadeiro` ou `NOT p(...)` é verdadeiro?
+        - NÃO. Halting problem (computabilidade)
+            - o que é uma máquina?
+            - como se executa instruções na máquina?
+                - modelos pra computação
+                - diferentes significados pra pergunta "o que é ser computável"?
+            - independente do que seja "ser computável", todos os modelos da computação (todas as respostas para tal pergunta) produzem os mesmas conclusões.
+                - hipótese Church-Turing
+        - Teoremas de Incompletude de Gödel:
+            - se "verdades absolutas" e as "regras pré-definidas" são suficientes pra construir aritmética (números naturais com operações básicas)
+
+
+TAREFA: leiam no wikipedia sobre
+    - linguagens formais
+    - computabilidade
+    - teoremas de incompletude de Gödel
+    - problema da parada

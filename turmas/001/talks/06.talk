@@ -1,0 +1,75 @@
+--------------------------------------
+talk: 006
+title: teoria ingênua de conjuntos III
+--------------------------------------
+
+> teoria ingênua de conjuntos:
+    > metalinguagem
+        > serve para estudar linguagens formais
+        > mas não é formal:
+            > contém paradoxos (paradoxo de Russell)
+
+    > alfabeto:
+        > conjuntos: `x, y, z, ...`
+        > pertinência: `in`
+        > delimitadores: `{`, `}`
+        > separadores: `,`
+        > predicados: `p, q, ...`
+    > gramática:
+        > `x in y`
+        > `{x, y, ...}`
+        > ...
+
+    > para cada `x` tem-se predicado `p[x](y) := y in x`
+    > igualdade:
+        > `eq(x, y) == True iff, if (z in x) then (z in y)`
+
+    > união:
+        > `Union(x, y) := p[x] or p[y]`
+        > `Inter(x, y) := p[x] and p[y]`
+        > `Compl(x) := not p[x]`
+
+> de_ conjuntos_ obtém-se _tuplas_:
+    > seja `x = {x0, x1, x2}` um conjunto
+    > `L(x) = {x0, {x1}, {{x2}}}`
+        > `(x0, x1, x2) := {x0, {x1}, {{x2}}}`
+        > `L(x)` é a _tupla associada à `x`_
+
+    > seja `p_L(x) == True iff x == {y0, {y1}, {{y2}}}`
+        > seja `p_L(x) == True iff x == L(y)`
+
+    > seja `List` o conjunto associado ao predicado `p_L`
+    
+> _produto_ de conjuntos
+    > sejam `x = {x0, x1, ...}` e `y = {y0, y1, ...}` conjuntos
+    > `Prod(x, y) = {(x0, y0), (x1, y1), (x0, y1), (x1, y0), ...}`
+    > `Prod(x, y) = {(a, b), (a in x) and (b in y)}`
+
+> _coproduto_ de conjuntos
+    > sejam `x = {x0, x1, ...}` e `y = {y0, y1, ...}` conjuntos
+    > `Coprod(x, y) = {(0, x0), (0, x1), (0, x2), ..., (1, y0), (1, y1), (1, y2), ...}`
+    > observe que:
+        > `Union(x, y) = {x0, x1, x2, ..., y0,  y1,  y2, ...}`
+        > suponha que `x0 = y0`
+            > então `Union(x, y) = {x0, x1, x2, ..., y1, y2, ...}`
+            > `Coprod(x, y) = {(0, x0), (0, x1), (0, x2), ..., (1, x0), (1, y1), (1, y2)}`
+    > Conclusão:
+        > mesmo que `x = y`:
+            > `Coprod(x, y) != x` e `Coprod(x, y) != y`
+    
+---------------------------
+tasks:
+    > seja `x` um conjunto. Mostre que, se `y, z in x`, então `y != z`
+        > seja `x` um conjunto. Mostre que, para todo `y in x`, `Union(x, {y}) == x`
+        > Isso significa que: _conjuntos não possuem elementos repetidos_
+    > sejam `x, y` conjuntos. Mostre que, se `y` é uma permutação de `x`, então `x == y`.
+        > `x = {x0, x1, ...}` e  `y = {x1, x0, ...}`
+        > Isso significa que: _conjuntos não dependem da ordem dos seus elementos_
+
+    > sejam `x, y` conjuntos:
+        > `Prod(x, y) == Prod(y, x)`?
+        > `Coprod(x, y) == Coprod(y, x)`?
+        
+    > sejam `x` um conjunto e `Empty = {}` o conjunto vazio.
+        > determine `Coprod(x, Empty)`
+---------------------------

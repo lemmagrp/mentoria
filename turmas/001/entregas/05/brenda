@@ -1,0 +1,111 @@
+1 - Union(x, x) = x
+
+Sendo
+
+Union(x, x) = (z in x) OU (z in x)
+
+Pela lógica, temos (P OU P) = P.
+
+Portanto, temos :
+
+Union(x,x) = x para todo valor arbitrário z
+
+--------------------------
+
+2 - Union(x, Empty) = x
+
+Sendo
+
+Union(x, Empty) = (z in x) OU (z in Empty)
+
+Como Empty não contém nenhum elemento, sabemos que a afirmativa (z in Empty) é falsa.
+
+Pela lógica, temos (P OU False) = P.
+
+Então:
+
+Union(x, Empty) = (z in x) OU False
+
+Portanto,
+
+Union(x, Empty) = x
+
+--------------------------------
+
+3 - Inter(x, x) = x
+
+Sendo
+
+Inter(x,x) = (z in x) E (z in x)
+
+Pela lógica, temos (P E P) = P.
+
+Logo,
+
+Inter(x, x) = x
+
+-------------------------------------
+
+4 - Inter(x, Empty) = Empty
+
+Sendo,
+
+Inter(x, Empty) = (z in x) E (z in Empty)
+
+Pela lógica, sabemos que True E False = False. Como Empty é vazio, logo sabemos que a sentença é falsa. Logo,
+
+NOT(z in Inter(x, Empty)) = Empty
+
+-----------------------------------------
+
+5 - Compl(x, x) = Empty
+
+Sendo,
+
+Compl(x, x) = (z in x) E (NOT(z in x))
+	    = (z in x) E Empty
+	    = Empty
+
+
+Pela lógica (P E NOT(P) = False). Existe duas possibilidades para o valor z : Estar em x, e não estar em x. Não tem como algo estar e não estar ao mesmo tempo.
+
+6- Associatividade
+
+Union(x, Union(y, z)) = Union(Union(x, y), z)
+
+X OU (Y OU Z) = Z OU (X OU Y)
+
+1º Caso : Assumindo (Y OU Z) como True
+
+	X OU True = (X OU Y) OU Z
+
+	Precisamos saber se Y ou Z :
+
+	1 - Z é verdadeiro
+		X OU True = (X OU Y) OU True
+
+	2 - Y é verdadeiro
+		X OU True = (X OU True) OU Z
+		X OU True = True OU Z
+
+2º Caso: Assumindo (Y OU Z) como False
+
+	X OU False = (X OU False) OU False
+
+	X OU False = X OU False
+
+	X = X
+
+-------------------------------------------
+
+7 - Regras de De Morgan
+
+As leis de De Morgan são duas leis lógicas pertencentes à lógica proposicional que foram formuladas pelo matemático inglês Augustus de Morgan (1806-1871). Eles estabelecem o seguinte, com relação a uma proposta lógica composta:
+	
+	1 - O oposto de uma conjunção é equivalente à disjunção que é formada com os opostos ou negações das propostas que compõem a conjunção.
+		
+		NOT((z in x) E (z in y)) = NOT(z in x) OU NOT(z in y)
+    
+	2 - A negação da disjunção pode ser expressa como uma conjunção composta pelos opostos ou negações das proposições envolvidas na disjunção.
+
+		NOT((z in x) OU (z in y)) = NOT(z in x) E NOT(z in y)

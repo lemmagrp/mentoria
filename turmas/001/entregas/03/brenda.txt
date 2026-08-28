@@ -1,0 +1,62 @@
+Maquinas Von Neumman
+
+História :
+	O projeto ENIAC foi uma resposta às necessidades dos EUA diante da Segunda Guerra Mundial. O Laboratório de Pesquisas Balísticas do Exécito, órgão responsável por desenvolver tabelas de trajetória e alcance para as novas armas vinha encontrando dificuldades em obter essas tabelas com boa precisão em tempo hábil. Sem essas tabelas, as novas armas da artilharia seriam inúteis. O laboratório empregava mais de 200 pessoas que, utilizando calculadoras de mesa faziam o cálculo dessas equações. A preparação das tabelas para uma única arma consumiam horas e até dias de trabalho.
+	Em 1943, a proposta do projeto ENIAC foi aprovada e o trabalha para construção do ENIAC teve início. O resultado final foi uma máquina enorme que pesava 30 toneladas, ocupava espaço de aproximadamente 140 metros quadrados e continha mais de 18 mil válvulas que foi concluído em 1946, tarde demais para ser utilizado na guerra. No entanto, posteriormente teve sua primeira tarefa que era realizar uma série de cálculos complexos, para ajudar a determinar se a bomba H poderia ser construída. O emprego do ENIAC para um propósito diferente demonstrou seu caráter de computador para uso geral, sendo considerado o primeiro computador eletrônico digital de propósito geral.
+
+O problema do ENIAC à conceito de programa armazenado :
+	O ENIAC não era programado como pensamos hoje. Para mudar o programa era necessário : mover cabos, trocar chaves, e alterar conexões. Isso tornava um processo tedioso, já que toda vez que quisesse executar um novo programa, tinha que reconstruir a máquina.
+	Os projetistas do ENIAC, incluindo Von Neumann, perceberam que o processo de programação poderia ser facilitado se o programa pudesse ser armazenado na memória, junto com os dados. Essa ideia foi conhecida como conceito de programa armazenado. Várias dessas ideias e discussões foram escritas em 1945 em um documento famoso chamado First Draft of a Report on the EDVAC.
+
+IAS e as máquinas de von Neumann:
+	Em 1946, von Neumann e seus colegas começaram um projeto de um novo computador chamado IAS. Embora tenha sido concluído 1952, constitui o protótipo de todos os computadores de uso geral. Toda sua estrutura geral, foi esboçado anteriormente naquele documento, lançado por Von Neumann.
+	A estrutura consiste em : Uma memória principal (que armazena dados e instruções), Uma unidade lógica e aritmética (capaz de realizar operações com dados binários), Uma unidade de controle (que interpreta e executa instruções armazenadas na memória, e Dispositivos de entrada e saída (E/S) operados pela unidade de controle.
+	Com raras exceções, todos os computadores atuais possui essas mesmas funções e assim são conhecidos como Maquinas Von Neumann.
+
+Gargalo da arquitetura Von Neumann:
+	Como instruções e dados compartilham o mesmo caminho de acesso à memória, pode surgir o chamado gargalo de Von Neumann, que limita o desempenho quando a CPU precisa esperar a memória. Esse é um dos principais pontos fracos do modelo.
+	Várias tecnologias modernas tentam reduzir ou contornar o gargalo de Von Neumann, principalmente aumentando a largura de banda entre CPU e memória, aproximando processamento e dados, ou usando arquitetura paralela.
+
+---------------------------------------------------------------------
+etapas do processo de compilação
+
+	As etapas do processo de compilação, de forma clássica, são: análise léxica, análise sintática, análise semântica, geração de código intermediário, otimização de código e geração de código objeto. Em algumas abordagens, ainda se destacam pré-processamento, montagem/assembler e linkedição, especialmente em C e C++.
+	Etapas principais
+		- Análise léxica: lê o texto-fonte e separa em tokens, como palavras-chave, identificadores e símbolos
+		- Análise sintática: verifica se os tokens estão organizados conforme a gramática da linguagem.
+		- Análise semântica: confere se o significado faz sentido, por exemplo tipos compatíveis e uso correto de variáveis.
+		- Código intermediário: gera uma forma interna mais simples de otimizar e traduzir.
+		- Otimização: melhora desempenho e/ou reduz tamanho do código gerado.
+		- Geração de código objeto: produz o código final em linguagem de máquina ou formato equivalente.
+
+--------------------------------------------------------------------------
+
+Linguagens estaticamente tipadas 
+
+	são aquelas cujo sistema de tipos verifica os tipos de variáveis e expressões em tempo de compilação (antes de o programa rodar), o que permite detectar muitos erros de tipo cedo no ciclo de desenvolvimento. Essas linguagens normalmente exigem (ou permitem) declarações explícitas de tipo e impedem que uma variável mude de tipo durante a execução, tornando o código mais previsível e seguro. Exemplos comuns incluem Java, C, C++, C#, Rust e Haskell, que realizam checagem de tipos em compilação para evitar operações inválidas entre tipos diferentes.
+
+Vantagens principais
+
+    - Detecção precoce de erros: muitos erros de tipo são capturados antes da execução, reduzindo bugs em produção.
+
+    - Melhor desempenho em tempo de execução: compiladores podem gerar código otimizado sabendo os tipos antecipadamente.
+
+    - Ferramentas melhores: autocompletar, refatoração e análise estática funcionam com mais precisão quando os tipos são conhecidos.
+
+Desvantagens e trade-offs
+
+    - Verbosidade inicial: pode exigir mais declarações e boilerplate (embora algumas linguagens ofereçam inferência de tipos para reduzir isso).
+
+    Menos flexibilidade na prototipação rápida: mudanças rápidas de estrutura de dados podem exigir mais alterações no código e recompilação.
+
+    Curva de aprendizado: entender sistemas de tipos avançados (genéricos, lifetimes, variance) pode ser complexo (por exemplo, em Rust ou Haskell)
+
+---------------------------------------
+
+Linguagens dinâmicamente tipadas 
+
+	são linguagens em que a verificação e/ou atribuição de tipos ocorre em tempo de execução, permitindo que variáveis recebam valores de diferentes tipos sem declaração explícita de tipo pelo programador
+
+	Vantagens: rápida prototipagem, leitura mais concisa, bom para scripts, automação e desenvolvimento ágil.
+
+	Desvantagens: erros de tipo detectados tarde, maior necessidade de testes, possíveis surpresas em conversões implícitas.

@@ -1,0 +1,97 @@
+--------------------------------------
+talk: 006
+title: teoria ingênua de conjuntos IV
+--------------------------------------
+
+> linguagens formais:
+    > alfabeto
+    > gramática
+
+> linguagem semi-formal:
+    > alfabeto
+    > gramática
+    > regras mal-definidas
+
+> teoria ingênua dos conjuntos:
+    > linguagem semi-formal:
+        > será utilizada como metalinguagem
+
+> conjuntos:
+    > símbolos: `x`, `y`, `z`, ...
+    > relação de pertencimento: `in`
+    > relação de igualdade:
+        > `x == y` := (`z in x` <-> `z in y`)
+
+> operações entre conjuntos:
+    > união Union(x, y):
+        > operação `or` entre booleanos
+            > estende pra predicados
+                > estende pra conjuntos
+
+    > intersecção Inter(x, y):
+        > operação `and` entre booleanos
+            > estende pra predicados
+                > estende pra conjuntos
+
+    > produto Prod(x, y):
+        > operação nova (não deriva diretamente de predicados)
+
+    > coproduto Coprod(x, y):
+        > operação nova (não deriva diretamente de predicados)
+
+> subconjuntos:
+    > sejam `x, y` conjuntos
+        > `x é subconjunto de y` := `(z in x) -> (z in y)`
+        > `x <= y` := `(z in x) -> (z in y)`
+
+    > dados conjuntos `x,y`:
+        > `x == y` iff `x <= y` and `y <= x`
+        > dois conjuntos são iguais  se, e somente se, são subconjuntos um do outro
+
+    > sejam x,y conjuntos, com x <= y
+        > x = {z in y, alguma coisa}
+        > x é subconjunto de y:
+            > existe um predicato `p` tal que:
+                > `x = {z in y, p(z)}`
+            > considerar um subconjunto é o mesmo que filtrar o conjunto por um predicado
+
+> sejam x,y conjuntos:
+    > Prod(x, y) = {(z, w), (z in x) and (w in y)}
+    > seja `R <= Prod(x, y)`
+        > R = {a in Prod(x, y), p(a)}
+        > R = {(z, w), (z in x) and (w in y) and p(z, w)}
+
+    > um predicado que depende de _duas_ variáveis é chamado de:
+        > _relação binária_
+    > `z` se relaciona com `w` com respeito à `p` (ou `R`) se `p(z, w) is True` (ou `(z, w) in R`).
+    > se `x !=y`:
+        > `R <= Prod(x, y)`:
+            > maneira de comparar os conjuntos `x` e `y`.
+
+> sejam x, y conjuntos:
+    > `x = y` então:
+        > `Prod(x, y) == Prod(y, x) == Prod(x, x) == Prod(y, y)`
+        > pode-se considerar uma relação `R <= Prod(x, x)`
+    > conclusão:
+        > maneira de comparar elementos de um mesmo conjunto para além da igualdade!
+
+> seja Nat o conjunto dos números naturais.
+    > Prod(Nat, Nat) := {(n, m), (n in Nat) and (m in Nat)}
+    > R <= Prod(Nat, Nat) := {(n, m), (n in Nat) and (m in Nat) and p(n, m)}
+    > p(n, m) := n <= m
+        
+> relacionar entre `x` e `y` é o mesmo que:
+    > dar uma afirmação, que dependende de `x` e `y`:
+        > a qual pode ser verdadeira ou falsa.
+
+------------
+tasks:
+> ler sobre tipos de relações:
+    > relação reflexiva
+    > relação transitiva
+    > relação simétrica
+    > relação antissimétrica
+> quais as propriedades acima caracterizam:
+    > a noção de igualdade entre conjuntos
+    > a relação de "ser subconjunto de"
+-----------

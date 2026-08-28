@@ -1,0 +1,47 @@
+Caio Henrique Granado
+
+Tarefas:
+
+1. paradoxo de Russell
+2. construção de naturais usando conjuntos: (existe o conjunto sem nenhum elemento)
+3. maneiras de contornar o paradoxo de Russell:
+     - teoria de tipos
+     - ZF+C
+     - von Neumann-Bernars-Gödel ("classe de todos os conjuntos")
+     - universos de Grothendieck
+     - topos elementares
+
+Resposta:
+
+1. No final do século XIX, Georg Cantor fundou a Teoria do Conjuntos baseada em uma premissa chamada Princípio da Compreensão Irrestrita, que compreendia que
+   qualquer propriedade ou condição que você consiga formular na linguagem lógica forma um conjunto válido, nesse mesmo período, Gottlob Frege (esse cara simplesmente rompeu com a lógica                
+   Aristotélica, isso é ousado e gigante) estava fazendo sua obra monumental, o Grundgesetza der Arithmetik (basicamente falando, ele queria provar a tese filosófico-matemática, o
+   Logicismo)
+   Para isso precisa fugir da recursão/circularidade lógica, no sentido de ter bases e premissas claras, por si só, para isso ele recorreu a extensão de conceitos, ele chegou a conclusão 
+   que a única forma de amarrar a lógica à matemática, era agrupando coisas que compartilham uma mesmo propriedade lógica, assim, adotando a Teoria do Conjuntos, e suas falhas, que 
+   assumiram nomes diferentes, mas com o mesmo efeito, se chamando Lei Básica V.
+   Então em 1901, o jovem Betrand Russel analisou a Lei Básica V em uma outra perspectiva, e encontrou uma falha critica, a liberdade total permitia a maldição da autorreferência, e para 
+   provar essa falha, criou o seguinte conjunto hipotético:
+   
+	>>>>>>>>>>>>>>> Seja R o conjunto de todos os conjuntos que não contêm a si mesmos, agora vem a pergunta fatal, o conjunto R contém a si mesmo? <<<<<<<<<<<<<<<
+
+   Essa então foi a grande motivação para a criação da Teoria de Tipos de Russel, sabendo da beleza e importância do que Frege havia criado, ele queria reparar essa falha
+
+2. Para responder essa pergunta vou usar a Teoria dos Conjuntos Zermelo-Fraenkel, durante sua construção Von Neumann exigia apenas duas regras fundamentais:
+	- De onde começar (Base Zero), aqui ele define que o número zero é o conjunto vazio, ou seja, 0 = {}
+	- A partir dela, como criar outras? Para criar o próximo número, Von Neumann definiu uma operação simples, o sucessor de um número n é formado pegando os elementos que já existem 
+          em n e adicionando o próprio n como um novo elemento dentro dele, S(n) = n U {n}
+
+   Dessa forma conseguiríamos criar o conjunto dos números naturais e teríamos sim o conjunto sem nenhum elemento, o 0
+
+3. Vou falar brevemente sobre duas teorias que tentaram lidar com o paradoxo de Russel:
+      - Teoria de Tipos: Criada por Bertrand Russel e Whitehead, essa teoria tenta resolver o problema dos paradoxos retificando a hierarquia gramatical estrita, a ideia é que o universo 
+        lógico é fatiado em níveis isolados, existem indivíduos (Tipo 0), conjuntos de indivíduos (Tipo 1), conjuntos de conjuntos (Tipo 2) e assim por diante, a relação de pertencimento  	agora não permite mais relações dentro do mesmo nível, ou seja, o pertencimento (x E Y) só é matematicamente válido se Y for exatamente um nível topológico acima de x
+	Essa foi a primeira grande correção, teve resistência por parte de muitos matemáticos, mas foi adotado pela Ciência da Computação, literalmente usamos nas linguagens de programação
+
+	- ZF+C: A teoria de Zermelo-Fraenkel com o Axioma da Escolha (ZFC) abandonou as hierarquias engessadas de Russel, em vez de estratificar o universo, ela achatou tudo em um único 
+        tipo fundamental, tudo é um conjunto :>)
+	Para isso funcionar, foram inseridas várias restrições lógicas, como a proibição de criação de conjuntos baseados apenas em propriedades irrestritas (temos que te limites), não 	podemos simplesmente invocar conjuntos do nada (parece o oposto do uso que Frege queria dar aos conjuntos, que usaria o conjunto para "justificar" seu pertencentes)
+	Aqui precisamos construi-los de baixo para cima usando axiomas rígidos (como visto na teoria de Von Neumann), o axioma da regularidade por exemplo, proíbe que um conjunto contenha 	a si mesmo, o que já resolve muita coisa! 
+	Por outro lado temos o +C que ao meu ver é bem controverso (assim como muitas das premissas matemáticas fundamentais) kkk ela dita que, dado um número infinito de conjuntos não-
+        vazios, é possível "escolher" um elemento de cada um para formar um novo conjunto, mesmo que não exista uma regra lógica explícita para fazer essa seleção

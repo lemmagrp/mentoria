@@ -1,0 +1,96 @@
+- linguagens formais:
+    - "alfabeto": símbolos
+    - "gramática": conjunto das "misturas" entre os símbolos do alfabeto consideradas "válidas"
+        - normalmente formada através de "regras"
+        - normalmente a gramática é "construída"
+
+- metalinguagens:
+    - linguagens para se falar de linguagens.
+
+- "área de estudo":
+    - "objetos de interesse"
+    - "relações entre os objetos de interesse"
+
+- metalinguagem como área de estudo:
+    - "objetos de interesse": linguagens formais
+    - "relações entre objetos de interesse": "mapa entre linguagens formais".
+
+- área de estudo "típica":
+    - objeto de interesse:
+        - possui "estrutura"
+        - possui "atributos"
+    - relação entre objetos:
+        - mapeia
+            - um objeto no outro
+            - estrutura em estrutura
+            - atributo em atributo
+
+- linguagem formal enquanto "objeto" (L):
+    - estrutura:
+        - alfabeto: A(L)
+        - gramática: G(L)
+
+- mapeamento entre linguagens formais (F: L1 -> L2):
+    - mapeamento entre os alfabetos:
+        - F: A(L1) -> A(L2)
+        - x in A(L1) |-> F(X) in A(L2)
+    - mapeamento entre as gramáticas
+        - F: G(L1) -> G(L2)
+        - p in G(L1) |-> F(p) in G(L2)
+            - p = x1ys2dbs "válida" em L1
+            - F(p) = F(x)F(1)... "válida" em L2
+
+- Computabilidade:
+    - diferentes apresentações pra propriedade de "ser computável".
+        - máquinas de Turing
+        - cálculo Lambda
+        - funções recursivas
+        - máquinas de Von Neumann
+    - modelos pro conceito de "hardware"
+
+- Linguagens formais x Computabilidade
+    - Teoremas de Godel -> Problema da parada
+    - sugere uma relação mais forte...
+    
+- FATO:
+    - para toda apresentação de computabilidade tem-se uma linguagem formal.
+    - máquinas de Turing -> linguagem formal
+    - cálculo Lambda -> linguagem formal
+    - ...
+    
+- Definição:
+    - linguagem de máquina:
+        - linguagem que corresponde:
+            - a um modelo de "hardware"
+            - a uma apresentação para "computabilidade"
+
+- Definição:
+    - linguagem de programação:
+        - linguagem formal LP
+        - linguagem de máquina LM
+        - junto de um mapa de linguagens formais F: LP -> LM
+            - "compilador"
+
+- Cadeia de compiladores:
+    - LP1 -> LP2 -> ... -> LM
+    - define o "nível" da linguagem de programação.
+
+- Linguagem "tipada"
+    - o alfabeto contém as classes "termo" e "tipo"
+    - declara o tipo da variável
+
+- Linguagem é "não-tipada"
+    - o alfabeto não contém as classes "termo" e "tipo"
+    - não declara o tipo da variável
+
+- O "compilador" contém uma etapa:
+    - análise semântica que contém
+        - processo de "type checking".
+
+
+----------------
+Tarefas:
+    1. máquinas de Von Neumann
+    2. etapas do processo de compilação
+    3. o que são linguagens de programação estaticamente tipadas
+    4. o que são linguagens de programação dinamicamente tipadas

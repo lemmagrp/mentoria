@@ -1,0 +1,60 @@
+Caio Henrique Granado
+
+Tarefas:
+    1. seja `x` um conjunto. Mostre que, se `y, z in x`, então `y != z`
+        > seja `x` um conjunto. Mostre que, para todo `y in x`, `Union(x, {y}) == x`
+        > Isso significa que: _conjuntos não possuem elementos repetidos_
+
+    2. sejam `x, y` conjuntos. Mostre que, se `y` é uma permutação de `x`, então `x == y`.
+        > `x = {x0, x1, ...}` e  `y = {x1, x0, ...}`
+        > Isso significa que: _conjuntos não dependem da ordem dos seus elementos_
+
+    3. sejam `x, y` conjuntos:
+        > `Prod(x, y) == Prod(y, x)`?
+        > `Coprod(x, y) == Coprod(y, x)`?
+        
+    4. sejam `x` um conjunto e `Empty = {}` o conjunto vazio.
+        > determine `Coprod(x, Empty)`
+
+Respostas:
+1. Conforme estudamos, ficou definido/claro que conjuntos não aceitam valores repetidos, o enunciado traz essa definição formalmente, se temos um conjunto x, e y e z estão contidos
+   nesse conjunto, logo y obrigatoriamente deve ser diferente de z
+   Agora temos que provar isso (eu fiquei um pouco confuso, pois para mim isso já era um prova kkk) então existindo um conjunto x, que em sua "composição" temos elementos y, se tentarmos
+   unir o nosso conjunto x com esses mesmos elementos y, já contidos no conjunto x, nosso resultado será x, já que conjuntos não aceitam elementos repetidos, aqui nós trabalhamos com
+   pertencimento, que é indicado através de um regra lógica (predicado, ex pA(x)), dizendo se o mesmo pertence (True) ou não pertence (False)
+   Tão certa é essa regra/definição, que, o União consiste em um px(z) OU py(z), pois se aplicarmos as mesmas regras (predicados) então teremos um mesmo conjunto, e dessa forma, não haverá 
+   nenhum incremento nessa união, pois serão elementos redundantes
+
+2. Para essa tarefa achei legal trazer uma definição, que é excencial dentro dessa resolução, que é permutação dentro da teoria de conjuntos, que é a basicamente a reorganização física dos
+   elementos pertencentes a um conjunto, por exemplo, temos o conjunto x = {1, 2, 3, 4, 5, 6} e o conjunto y = {6, 5, 4, 3, 2, 1}, ambos são equivalentes, já que conjuntos não se importam 
+   com ordenação, somente com pertencimento, como já dito acima, ou seja, o predicado que é nosso "avaliador de regras", terá a mesma regra para ambas, gerando o mesmo conjunto para ambas, 
+   ele não quer avaliar quem vem primeiro ou por último, ele quer avaliar se pertence ou não
+
+3. Agora começamos a deixar a teoria de conjuntos mais elegante, chegamos aos Produtos e Coprodutos, que são de extrema beleza ao pensar e analisar suas inúmeras aplicações, em banco de  
+   dados relacionais, dicionários e classes por exemplo.
+   Vamos supor algo simples, um conjunto x onde temos materiais para escrever, x = {lápis, caneta, giz} e um conjunto y com todas as cores possíveis y = {azul, verde, amarelo}, então a 
+   partir do produto, nós geramos um novo conjunto, cruzando todos os elementos de x com os elementos de y, ficando algo como Prod(x, y) = {(lápis, azul), (lápis, verde), (lápis,
+   amarelo), ...}, estamos usando um exemplo com duas dimensões, mas não temos esse limite, podemos ter quantas dimensões forem necessárias (é claro que a cada aumento, a 
+   interpretabilidade humana acaba por ficar menor/prejudicada)
+   Agora que fiz essa introdução, podemos analisar se Prod(x, y) é igual a Prod(y, x)? 
+   A resposta é não, na teoria ingênua, a tupla (lápis, azul) é apenas uma ilusão visual para facilitar a leitura, mas por baixo dos panos, o conjunto não sabe o que é ordem. 
+   Para não se perder, o sistema usa o truque de colocar uma chave extra no segundo elemento (como o Yuri usou na aula anterior), criando uma estrutura "física": {lápis, {azul}}.
+   Se a gente inverter a operação para Prod(y, x), quem ganha a chave extra é o lápis, resultando em {azul, {lápis}}, como a estrutura física mudou, o nosso predicado (o avaliador de 
+   regras) enxerga conjuntos diferentes, logo, a ordem importa!
+   Ia finalizar mas acho interessante falar mais sobre o predicado para Produtos, antes do produto basicamente respondíamos a regras unitárias, ou ao menos de forma lazy, uma a uma, em 
+   produto teremos que atender a n condições simultaneamente, cada elemento precisa responder a um predicado, e aqui novamente fica bem elegante, no nosso caso ilustrativo fica fácil usar 
+   o predicado do próprio conjunto que é usado no Produto para determinar as regras para o mesmo, já que são elementos distintos, no caso materiais e cores, mas e se fossem todos números? 
+   Ai entra a beleza do uso do chave extra, olhando pelo lado do predicado, é basicamente por isso que ele é capaz de avaliar igualdade do mesmo tipo, o elemento 1 solto é diferente do {1} 
+   encapsulado dentro da chave extra, assim, A = {1, {3}} é diferente de B = {3, {1}}, apesar de ter o mesmo tipo, conseguimos fazer essa comparação a fim de validar sua igualdade
+   Enquanto o Produto é uma união de n elementos em tuplas, com um casamento, o Coproduto é algo mais próximo de uma "fila", aqui não queremos encapsular n elementos, queremos poder 
+   considerar elementos repetidos, proveniente de conjuntos diferentes, o que seria o suficiente para considerar o mesmo como um elemento diferente, já que em Coproduto ele toma uma forma 
+   indexável, onde o conjunto lhe provem um índice, vindo do conjunto x, o mesmo terá um índice 0, enquanto os elementos proveniente do conjunto y terão um índice 1, ficando algo como 
+   Coprod(x, y) = {(0, lápis), (1, verde), (0, giz), (1, azul))}, um exemplo bem bobinho para ficar claro essa beleza, temos um conjunto c, contendo pessoas que gostam de café c = {Caio, 
+   Brenda, Diego} e um t contendo pessoas que gostam de chá, t = {Caio, Yuri, George}, ao fazer Coprod(c, t) = {(0, Caio), (0, Brenda), (0, Diego), (1, Caio), (1, Yuri), (1, George)}, 
+   podemos repetir, e mesmo assim, por conta do rótulo, serão vistos como elementos diferentes
+
+4. Chegamos a última análise, que parece uma pegadinha, o que acontece se fizermos o Coproduto de um conjunto x com um conjunto vazio Empty?
+   Obtemos o Coprod de x, basicamente, pois o x ao lado esquerdo, irá receber seu rótulos 0 seguido do elemento, como é padrão, porém, o conjunto vazio não possui elementos a serem 
+   rotulados, dessa forma nosso Coproduto do conjunto vazio é nula
+   OBS: o conjunto x é alterado, encapsulando cada elemento em uma tupla com índice 
+ 

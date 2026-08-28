@@ -1,0 +1,38 @@
+Caio Henrique Granado
+
+Tarefas:
+
+1. máquinas de Von Neumann
+
+2. etapas do processo de compilação
+
+3. o que são linguagens de programação estaticamente tipadas
+
+4. o que são linguagens de programação dinamicamente tipadas 
+
+
+
+Respostas
+
+1. Fiquei impressionado com a genialidade de Von Neumann (que infelizmente morreu cedo, acho que tinha muitos mais para oferecer), que não se resume ao desenvolvimento dessa arquitetura, mas o mesmo foi um dos grandes pensadores da atualidade, teve influência direta nas teorias quânticas e como o indivíduo e ambiente se relacionam. Pensando nas máquinas de Von Neumann, antes de 1945, a lógica e a máquina eram coisas completamente distintas (é muito interessante notar que isso é uma espécie de reflexão sobre como nós nos enxergávamos, algo como corpo x mente(alma) ou tudo é "corpo"/matéria, Arquitetura de Harvard x Arquitetura de Von Neumann) para mudar o que um programa fazia, você precisava literalmente trocar fios e chaves físicas no hardware. Von Neumann trouxe o conceito de "Programa Armazenado", onde os dados e código (a "matéria" e a "lógica") são feitos da exata mesma substância e habitam o mesmo espaço físico, a memória RAM
+Para o hardware, não há diferença estrutural entre um dado e uma instrução, o grande problema é que, ao jogar tudo no mesmo barramento de processamento, criamos o conhecido Gargalo de Von Neumann (tem uma fila). É interesasnte pensar que concorrência e travas físicas de memória (como o GIL do Python estrangulando as threads kk) nascem diretamente dessa decisão, mas foi o preço necessário para o software se libertar das amarras físicas do hardware.
+
+2. Aqui eu quis mais trazer os conceitos básicos mesmo, segue abaixo:
+
+- Análise Léxica: Isola os caracteres e valida se as palavras existem no alfabeto do sistema.
+
+- Análise Sintática: Monta a árvore de execução para garantir que a gramática faça sentido estrutural.
+
+- Análise Semântica: O ápice da auditoria. É aqui que o fantasma de Bertrand Russell entra em ação. Se você tenta somar um texto com um número, a sintaxe pode até estar perfeita, mas a semântica detecta um absurdo lógico intransponível.
+
+- Geração de Código: A tradução final otimizada para o processador.
+
+O compilador trava a execução na Análise Semântica, barrando qualquer inconsistência de sujar o processador e evitando que a nossa ambiguidade humana quebre o universo da máquina.
+
+3. As linguagens estáticas (como Java, C ou Rust) são a aplicação prática da Correspondência de Curry-Howard na fábrica da programação, aqui, o "tipo" deixa de ser apenas uma instrução para alocar espaço físico na memória e assume a posição de um teorema lógico exigido a priori.
+
+Para o código poder ser compilado e existir no processador, a linguagem exige que você assine um contrato estrito, provando de antemão que as suas abstrações não gerarão paradoxos. A máquina tem a garantia matemática quase absoluta. Como nada é de graça, isso amarra o programador à burocracia. Muitas vezes ficamos travados lutando contra o compilador para satisfazer a "verdade platônica" de cada variável e modelagem de banco de dados, o que tira o controle e o foco da intenção real de arquitetura.
+
+4. Em oposição frontal, as linguagens dinâmicas (como Python ou JavaScript) representam o empirismo kk. O conceito de tipo existe, o interpretador obviamente sabe a diferença entre uma string e um booleano (precisa saber), mas nós jogamos a verificação prévia pela janela e só validamos as regras no exato momento da execução (runtime). É o triunfo prático do Duck Typing (eu gosto disso no Python kk é quase como se ele fosse capaz de ter contexto)
+
+Ao abrir mão da prova matemática exigida pelos compiladores estáticos, nós ganhamos uma velocidade de desenvolvimento e iteração absurda, mas por outro lado assumimos o risco da roleta russa lógica kk. Se a nossa premissa de dados estiver errada, a linguagem não avisa com antecedência, o algoritmo sofre o choque empírico com a realidade e a aplicação explode na nossa cara enquanto está rodando.

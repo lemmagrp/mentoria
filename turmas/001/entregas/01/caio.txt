@@ -1,0 +1,32 @@
+Caio Henrique Granado
+
+
+Linguagens Formais
+
+São linguagens com fundamento lógico/matemático, como a linguagem natural (orgânica) é caótica e cheia de ambiguidades heurísticas, desenvolvemos as linguagens formais, como exemplo a linguagem de programação, que almejam ser mais precisas tanto em sua escrita quanto na semântica, evitando assim o Principio da Explosão, que seria basicamente admitir uma única contradição como verdadeira, o que quebra a lógica do sistema como um todo.
+Genericamente, podemos dizer que se trata de um sistema matemático composto estritamente por um alfabeto rigorosamente definido e finito, além claro da regras do jogo, a "gramática", que basicamente definem o comportamento dos elementos/atributos desse nosso sistema.
+
+Computabilidade
+
+É a área de conhecimento que estuda os limites inquebráveis do "motor" de processamento da realidade, define não a velocidade que algo pode ser calculado, mas sim, se o problema possui ou não uma solução mecânica/algorítmica
+Algumas das fronteiras do universo lógico:
+
+ - Incomputável: Matematicamente impossível de se prever ou resolver (Halting Problem)
+ - Intratável: Até existe um algoritmo, mas a barreira física da entropia impede a execução (exigiria mais energia ou tempo do que há disponível no universo, claro com a visão antrópica)
+ - Tratável: Onde afortunadamente, tivemos o privilegio(pensando que o universo é um caos kk) de desenvolver cálculos eficientes 
+
+Aqui acho interessante pontuar o poder do pragmatismo, além claro da genialidade humana, com todas essas barreiras, mesmo assim desenvolvemos coisas ditas impossíveis, principalmente por conseguir fatorar problemas e vê-los de formas diferentes assim criamos diversos "curativos" para remendar essas limitações e chegar em nossos objetivos
+
+
+Teoremas da Incompletude de Gödel
+
+Esse foi um dos golpes mais doloridos para a lógica formal, sonhávamos que a mesma poderia desvendar toda a realidade/verdade do universo, mas ela é uma mapa, muito bom, mas não completo
+Em 1931, Kurt Gödel provou que em qualquer sistema lógico complexo o suficiente para fazer aritmética básica (e autorreferênciavel), sempre existirão afirmações que são verdadeiras, mas que são impossíveis de serem provadas dentro das regras desse próprio sistema. Ele desenvolveu a Numeração de Gödel, que transforma lógica em números, criou uma equação matematicamente válida que dizia "Eu não posso ser provada", se o sistema provasse, seria contraditório, e então BOOM,  o Princípio da Explosão é acionado... então, como não se pode provar, o sistema é incompleto
+Assim, a lógica teve de assumir uma posição mais humilde, separando a verdade da mesma, a lógica é nosso grande farol racional, mas existem verdades que permanecerão eternamente no escuro, dessa forma, passamos a aceitar que a ciência/verdade é um processo contínuo de atualizações de modelo e não um conjunto de dogmas escritos em pedra
+
+Halting Problem (O Problema da Parada)
+
+De maneira leiga, é a aplicação do Teoremas da Incompletude de Gödel para um contexto físico mais tangível, no caso, os algoritmos (não de software em si, mas algoritmo enquanto um passo a passo, "receitinha de bolo"). Desenvolvida em 1936 por Alan Turing, o mesmo provou que não existe e nunca existirá um algoritmo universal (uma espécie de "Oráculo") capaz de analisar o código de qualquer outro programa e prever se ele vai finalizar sua tarefa ou rodar em loop infinito para sempre
+Para provar isso, ele propôs o seguinte: 
+- Imagine que esse Oráculo perfeito exista, agora criamos um programa para sacanear esse Oráculo kk chamamos o mesmo de "Trapaça", a única função desse programa é perguntar ao Oráculo o que ele mesmo vai fazer (Turing já "sabia", ele é arbitrário em seu exemplo para de fato destruir qualquer esperança kk), e então executar exatamente o oposto, por exemplo, se o Oráculo diz que ele vai parar, o programa entra em loop, se o Oráculo diz que ele entra em loop, o programa para. Quando o Oráculo tenta prever a Máquina Trapaça, ele entra em um colapso lógico paradoxal.
+Portanto, como o universo não permite essa contradição sem acionar o Princípio da Explosão, a conclusão matemática é que o Oráculo de previsão universal não pode existir.

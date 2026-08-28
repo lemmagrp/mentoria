@@ -1,0 +1,68 @@
+
+1. Revisão:
+    - linguagens formais:
+        - alfabeto: símbolos
+        - gramática: palavras (misturas dos símbolos) admissíveis
+
+    - exemplos:
+        - lógica proposicional (lógica de ordem 0)
+            - símbolos:
+                - proposições (afirmações): p, q, ...
+                - conectivos (operadores):  AND, OR, NOT,
+                - delimitadores: (, )
+            - gramática:
+                - IF ((p AND q) OR (NOT x)...) THEN w
+                - ...
+        - lógica de predicados (lógica de ordem 1)
+            - símbolos:
+                - predicados: p, q, ...
+                - variáveis: x, y, z, ...
+                - constantes: a, b, c, ...
+                - operadores: o1, o2, ...
+                - funcionais: f, g, ...
+                - delimitadores: (, )
+            - gramática:
+                - op(p(f(x)), q(y)) ...
+            - semântica:
+                - "quantificadores": funções que dependem de variáveis que variam dentro de um "domínio de discurso".
+                    - para todo: forall x in D, then ... forall(x, D)
+                    - existe algum: exists x in D, such that ... exists(x, D)
+        - lógica de ordem 2 ?
+                ...
+                - "quantificadores": funções que dependem de variáveis e predicados, que variam dentro de um "domínio de discurso" 
+                    - para todo: forall x in D and p in P, then ..., forall(x, p, D, P)
+                    - ...
+        - lógica de ordem 3?
+            - forall(x, p, f, D, P, F), f(x, p)
+
+2. Sistemas de tipos
+    - linguagens formais
+        - alfabeto
+            - termos: x, y, z, ...
+            - tipos: X, Y, Z, ...
+            - associação: `:`
+                - `x: X` (termo `x` de tipo `X`)
+                - NÃO EXISTE: `x: y`
+            - implicação: AND, OR, IF/THEN
+            - delimitadores (, )
+        - gramática
+            - (x: X AND y: Y) OR z: Z IF/THEN w: W 
+
+3. Correspondência de Curry-Howard
+    - predicado p(x)
+        - X(p), x: X(p) IFF p(x) é verdadeiro.
+            - x: X(p) IF/THEN p(x) é verdadeiro.
+            - p(x) é verdadeiro IF/THEN x: X(p)
+
+    - tipo X
+        - p_X(x) é verdadeiro IFF x: X
+            - isterm(x, X): Bool is True IFF x: X
+
+
+-----
+Tarefas:
+
+1. problema da parada com tempo infinito
+2. metalinguagens
+3. linguagens de alto nível
+4. correspondência de Curry-Howard

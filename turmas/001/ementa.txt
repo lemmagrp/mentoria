@@ -1,0 +1,31 @@
+VISÃO GERAL
+--------------
+02/06: linguagens formais: visão geral
+    - linguagens formais e sistemas dedutivos
+    - consistência e completude
+    - computabilidade e modelos computacionais
+    - problemas computacionais
+    - teoremas limitantes
+16/06: sistemas de tipos: visão geral
+    - sistemas de tipos como linguagem formal 
+    - o paradoxo de Giraud
+    - universos
+    - Curry-Howard
+30/06: linguagens de programação: visão geral
+    - objetos de estudo como "entidades com estrutura"
+    - morfismos entre objetos de estudo
+    - morfismos entre linguagens
+    - linguagens de máquina
+    - linguagens de programação
+
+FORMALIZAÇÃO: LINGUAGENS FORMAIS
+-----------------------------------
+18/07: conjuntos como metalinguagem
+    - conjuntos como linguagem formal
+    - axiomas básicos
+    - paradoxo de Russell
+    - teoria ingênua de conjuntos
+    - união, intersecção
+    - produto, coproduto
+
+28/07: relações e funções

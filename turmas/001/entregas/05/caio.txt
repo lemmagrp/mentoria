@@ -1,0 +1,44 @@
+Caio Henrique Granado
+
+Tarefas:
+
+ 1. provar que para todo `x`:
+        1.1 `Union(x, x) = x`
+        1.2 Union(x, Empty) = x
+        1.3 `Inter(x, x) = x`
+        1.4 Inter(x, Empty) = Empty
+        1.5 Compl(x, x) = Empty
+	1.6 Union(x, Union(y, z)) = Union(Union(x, y), z)
+ 2. regras de De Morgan
+       
+
+
+Resposta:
+
+1.1 A ideia de conjuntos que como vimos na última aula ou em um dos seus posts, agora não me recordo kk é que conjuntos (definido como set no Python) se tratam de valores únicos, já a lista permite a repetição de valores, logo ao unir um mesmo conjunto múltiplas vezes, não adquirimos um conjunto maior ou um novo conjuntos, mas apenas o mesmo conjunto que já tínhamos anteriormente, diferente do caso de listas, que teríamos uma lista maior (com valores repetidos), isso é chamado de Idempotência da União
+a ∈ x ∨ a ∈ x <==> a ∈ x  ou seja, x ∪ x == x
+
+1.2 Aqui achei bem interessante, pois a união dos elementos de um conjunto vazio em si não agrega nada (não estamos adicionando nada), ao contrário do agregado de conjuntos vazios, que é a forma que von Neumann definiu para construímos o conjunto dos números naturais, por exemplo
+a ∈ x ∨ a ∈ ∅ <==> a ∈ x  ou seja, x ∪ ∅ == x
+
+Para as duas respostas abaixo, entramos nos mesmo conceitos de redundancia usados acima, porém, agora olhando para interseção e não união
+
+1.3 Como ambos possuem os mesmos elementos, buscar a interseção entre ambos é redundate
+a ∈ x ∧ a ∈ x <==> a ∈ x  ou seja, x ∩ x == x
+
+1.4 Diferente dos casos anteriores, aqui temos uma contradição lógica, de certa forma, usamos os predicados como injetores booleanos, retornando True para elementos que serão inseridos no conjunto e False para aqueles que não satisfazem a condição, diferente da União, a interseção obrigatoriamente depedente que a E b sejam verdadeiros, o que é impossível para esse tipo de conjunção
+a ∈ x ∧ a ∈ ∅ <==> Falso  ou seja, x ∩ ∅ == ∅
+
+1.5 E novamente, aqui temos uma contradição lógica, pois obrigatoriamente teriamos de assumir True e False para um mesmo conjunto de dados, dado que para encontrar o complemento relativo, teriamos que satisfazer a seguinte conjunção a ∈ x ∧ a ∉ x <==> FALSO (já que ambos possuem os mesmo elementos) ou seja, x - x == ∅
+
+1.6 Aqui eu acredito que tenha sido meio que uma pegadinha, com relação a ordem dos elementos, mas como se trata de uma conjunção associativa (estamos agregando elementos de dois ou mais conjuntos em um único conjunto maior, leigamente falando) a ordem pouco importa, o que de fato leva ambos os conjuntos a serem equivalentes
+a ∈ x ∨ a ∈ z ∨ a ∈ y <==> a ∈ x ∨(a ∈ y ∨ a ∈ z) então independente da ordem com a qual fazemos essas associações, o conjunto final será o mesmo
+
+As Leis de De Morgan se resume a duas regras matemáticas fundamentais na teoria de conjuntos, ela mostra como as operações de união e interseção se transformam (equivalencia) uma na outra quando aplicamos o conceito de complementar (que é melhor concebido dentro da programção como negação/NOT)
+Um detalhe importante, o conceito de complemento opera sobre um Conjunto Universo delimitado, que representamos matemáticamente como xc = U \ x, usando como referencia um DataFrame, poderiamos falar em linguagem natural todas as linhas do meu Data Frame que não satisfazem a condição x
+
+2.1 Aqui estamos para um pensamento mais complexo atráves da negação (o czinho como expoente), afim de provar que a união é equivalente a interseção 
+a ∈ (x ∪ y)c <==> ¬(a ∈ x V a ∈ y) <==> a ∉ x ∧ a ∉ y <==> a ∈ xc ∧ a ∈ yc  logo a ∈ (xc ∩ yc)
+
+2.2 Segue o mesmo que fizemos acima, porém no sentido contrário, agora indo da interseção para a união
+a ∈ (x ∩ y)c <==> ¬(a ∈ x ∧ a ∈ y) <==> a ∉ x V a ∉ y <==> a ∈ xc V a ∈ yc  logo a ∈ (xc ∪ yc)

@@ -1,0 +1,69 @@
+mentoria
+---------
+1. reuniões quinzenais (seg-quinta às 19h)
+    - alguém apresenta o que fez desde a última reunião
+    - discussão (sobre o que foi apresentado)
+    - introdução de novos conceitos e ideias
+    - deixar tarefas
+    - tirar dúvidas (sobre os novos conceitos e sobre as tarefas)
+
+2. 'ambiente' de troca de informações
+    - email, discord, reddit, whatsapp, google chat, telegram, etc.
+    - precisamos de um 'coordenador'
+    - discussões (todos)
+    - troca experiências
+    - ideias de projetos
+    - tirar dúvidas
+    - sugestões de referências
+    - ...
+
+3. objetivo primário
+    - formação de pessoas com:
+        - visão crítica
+        - viés colaborativo
+        - base sólida
+        - interesse e capacidade de ajudar outras pessoas
+
+    - criação um espaço:
+        - seguro (sem julgamentos) pra troca de informações
+        - colaborativo (sem individualismo ou ego inflado)
+        - com pessoas com mesmo interesse
+
+4. objetivo secundário
+    - desenvolvimento de projetos:
+        - programação
+        - de ensino
+        - de pesquisa
+
+
+regras
+--------------
+1. sobre presença
+    - presença deve ser confirmada ou ausênsia justificada até meio-dia do dia da reunião
+    - ausência sem justificativa: perde o lugar
+
+2. sobre tarefas
+    - serão entregues no 'ambiente' até o meio-dia do dia da reunião
+    - se não for possível entregar a tarefa de uma reunião:
+        - pode-se entregar junto com a tarefa da próxima reunião
+    - se acumular 3 reuniões sem entregar tarefa, perde o lugar
+
+3. sobre o 'ambiente'
+    - impera a colaboração:
+        - se alguém tem uma dúvida e você se vê capaz de ajudar, deve-se ajudá-la sempre que possível
+        - comportamentos agressivos ou egocêntricos não serão tolerados
+    - estar disponível sempre que possível
+
+observações
+----------------
+1. sobre o meu conhecimento
+    - limitado: eu não sei (muito menos sou especialista em) tudo
+    - nem sempre é exato: ter a iniciativa de cobrir o que não ficou claro entre as reuniões
+    - nem sempre é correto: não tome o que eu digo como verdade
+
+2. sobre o uso de IA
+    - use como quiser
+    - tenha senso crítico de saber que o que sai de lá:
+        - é limitado
+        - nem sempre é exato
+        - nem sempre é correto

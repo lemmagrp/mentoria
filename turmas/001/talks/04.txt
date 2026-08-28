@@ -1,0 +1,82 @@
+- Revisão:
+    - linguagem formal:
+        - alfabeto: símbolos
+        - gramática: palavras (misturas finitas de símbolos) admissíveis na linguagem
+
+    - exemplos:
+        - logica proposicional (lógica de ordem zero)
+        - logica de predicados (lógica de ordem um)
+        - sistemas de tipos
+
+    - para se estudar linguagens:
+        - precisa-se de uma metalinguagem:
+            - informal ou "semi-formal"
+
+    - morfismo (mapa) entre llinguagens  formais:
+        - F: L1 -> L2
+            - F: A(L1) -> A(L2)
+            - F: G(L1) -> G(L2)
+
+    - linguagem de programação
+        - F: LP -> LM 
+            - LM: linguagem formal associada a um modelo computacional.
+
+- Metalinguaguem: teoria __ingênua__ de conjuntos.
+    - "teoria de conjunto":
+        - linguagem "formal":
+            - alfabeto:
+                - símbolos 'x, y, z, ...' (conjuntos)
+                - "pertencimento": 'in'
+                - delimitadores: '{', '}', '(', ')'
+                - separadores: ','
+                - proposições: 'p, q, ...'
+                - predicados: 'P(x)', 'Q(y)', ...
+            - gramática:
+                - ((x in y) in z (...))
+                - {x, y, z, ...}
+                - {x, {y, z}, w, ...}
+                - errado: {x in y, z, ....}
+        - se 'x in y':
+            - lê-se 'x pertence à y'
+            - ou então que 'x é um elemento de y'.
+      
+        - Axioma 1:
+            - se 'P' é um predicado, então:
+                - existe o conjunto X(P) tal que:
+                    - "x in X(p)" iff "P(x)" é verdadeiro.
+
+            - em outras palavras:
+                - para todo predicado 'P':
+                    - { x tal que P(x) é verdadeiro } é um conjunto
+
+        - pergunta:
+            - será que existe o "conjunto de todos os conjuntos"?
+                - existe "U" tal que se "x" é conjunto, então "x in U".
+
+        - suponha que:
+            - existe "U"
+            - o Axioma 1
+            
+        - considere:
+            - "P(x): x in x"
+            - U(P) = { x in U tal que not x in x }
+                - U(P) in U(P)? sim
+                - U(P) not in U(P)? sim
+            - contradição:
+                - paradoxo de Russell
+        
+        - temos problemas com:
+            - U: conjunto que contém todos os conjuntos
+            - Axioma 1: para todo conjunto X e todo predicado P existe um novo conjunto X(P) cujos elementos são os elementos 'x in X' tais que P(x) é verdadeiro.
+                
+------
+Tarefas:
+    1. paradoxo de Russell
+    2. construção de naturais usando conjuntos: (existe o conjunto sem nenhum elemento)
+    3. maneiras de contornar o paradoxo de Russell:
+        - teoria de tipos
+        - ZF+C
+        - von Neumann-Bernars-Gödel ("classe de todos os conjuntos")
+        - universos de Grothendieck
+        - topos elementares
+            

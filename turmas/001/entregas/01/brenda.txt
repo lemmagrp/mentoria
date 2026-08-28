@@ -1,0 +1,30 @@
+Problema da Parada
+
+O experimento mental do problema da parada é um problema de decisão em que consiste saber se dado um programa, é possível determinar se ele termina ou não. Em 1936, Alan Turing provou que dado algoritmo genérico para resolver a questão não pode existir, e portanto o problema da parada é indecidível nas Máquinas de Turing.
+
+Suponhamos que exista um programa H que determina se um programa para ou não e K um programa usa H e faz o comportamento oposto a do H. Se o programa K recebe como parâmetro ele mesmo, gerará uma contradição
+
+Teoremas da incompletude de Gödel
+
+Os teoremas da incompletude de Gödel são dois teoremas da lógica matemática que estabelecem limitações inerentes a quase todos os sistemas axiomáticos, exceto aos mais triviais.
+
+O primeiro Teorema da Incompletude diz que em uma sistema consistente capaz de expressar a aritmética, existem afirmações verdadeiras que não podem ser provadas dentro do próprio sistema.
+
+O segundo Teorema da Incompletude afirma que um sistema não consegue comprovar que está livre de contradições.
+
+Esses dois teoremas mostram que o problema de Hilbert que tentava encontrar um conjunto completo e consistente de axiomas para toda a matemática é impossível.
+
+Computabilidade
+
+Computabilidade é uma área da ciência da computação que estuda quais problemas podem ser resolvidos por algoritmos e quais não podem. Os modelos mais estudados da computabilidade são as funções Turing-Computáveis e as  funções μ-recursivas, e o cálculo lambda, todos os quais têm poderes computacionais equivalentes. Já, noções de computabilidade mais fracas que as máquinas de Turing são estudadas pelas Teorias dos Autômatos, enquanto que noções mais fortes são estudadas no campo da Hipercomputação.
+
+Um problema computacional é uma tarefa que queremos que um computador resolva. Há dois tipos de problema : problemas de decisão que consistem em uma pergunta geral se um determinado objeto faz parte ou não de determinado conjunto, e problemas de fuExistem vários modelos de computação.
+
+Existem vários modelos de computação, sendo alguns mais poderosos que outros. O poder de um modelo pode ser medido pelas linguagens que ele consegue reconhecer. A Hierarquia de Chomsky organiza essas linguagens por complexidade.
+
+Linguagens Formais
+
+A linguagem formal é uma forma de comunicação que utiliza um conjunto de símbolos chamado alfabeto e uma gramática (regras que dizem como combinar os símbolos). A sua representação podem ser feitas por reconhecedores e geradores. 
+
+Geradores são dispositivos formais que produzem todas as sentenças válidas, sendo as gramáticas os principais sistemas geradores disponíveis.
+Já os reconhecedores são dispositivos formais que servem para verificar se uma frase pertence ou não à determinada linguagem. Um autômato é um modelo matemático que executa esse processo de reconhecimento. Existem diversos tipos de autômatos, que variam de modelos que suportam linguagem mais simples de linguagens mais complexas.

@@ -1,0 +1,33 @@
+1. problema da parada com tempo infinito
+
+2. metalinguagens
+
+3. linguagens de alto nível
+
+4. correspondência de Curry-Howard
+
+
+
+Essas são as tarefas dessa semana
+
+1 - Com relação ao Problema da Parada com tempo infinito, para mim parece claro que é indiferente, pois não é questão de intratabilidade computacional (seja por limite de hardware ou tempo), mas sim a quebra direta na Consistência do sistema, gerada por uma autorreferência estrutural que é análoga ao paradoxo de um conjunto que pertence a si mesmo (Cantor x Russell).
+
+O desafio original da Decidibilidade (introduzida por Hilbert) exigia um algoritmo que julgasse qualquer programa, mas Turing de fato coloca uma armadilha (ele sabia bem o que queria provar kk), a máquina "Trapaça" força esse "Oraculo" a entrar em contradição inescapável, onde a única resposta possível é contraditória (se prever que é eterno, pare imediatamente, caso contrário, continue rodando). Isso quebra a Consistência e aciona o Principio da Explosão, e ao me debruçar sobre esse últimos temas estudados, tenho que a maioria desses problemas lógicos "fatais" é causado pela autorreferenciação... 
+
+
+
+2 - Para a metalinguagem, acho interessante trazer a motivação para o seu desenvolvimento, que apesar de "simples" é extremamente elegante e engenhosa. Ela não se volta à base de uma área do conhecimento em si, mas sobre o entendimento humano do universo (que contém infinitos universos dentro de si). Filósofos como Francis Bacon e Gottfried Leibniz enxergavam que a ambiguidade impossibilitava uma comunicação precisa e de alto nível, entendendo que, muitas das vezes, os problemas não eram os fenômenos em si, mas como eram expressados e interpretados.
+
+Com isso, ficou claro que não poderíamos usar a linguagem natural deliberadamente dentro da lógica formal ou, de um modo geral, nas áreas exatas do conhecimento, onde devemos ser estritamente literais e calculistas. Nessa linha de pensamento, Alfred Tarski foi o arquiteto estrutural da solução, onde fez a separação entre Linguagem Objeto (que só fala sobre coisas do mundo físico/matemático) e a Metalinguagem (que "flutua" sobre a primeira e só tem permissão para auditar as regras dela). Aqui mora uma das pegadinhas e perigos da metalinguagem, a autorreferência, quem valida a metalinguagem? Seria necessária uma recursão infinita?!
+
+De forma simples, a metalinguagem é literalmente uma "linguagem sobre outra linguagem". Ela funciona como um manual de instruções externo que usamos para "traduzir", interpretar e ditar como a linguagem base deve operar. A metalinguagem cria uma manta isolando o "universo" de interferências externas, com suas próprias "regras e costumes", na tentativa de tornar a interação a mais confiável e precisa possível (claro que acredito que essas são "soluções ótimas" genéricas, mas a metalinguagem pode ser construída para atender "qualquer solução").
+
+
+3 - O grande salto das linguagens de Alto Nível é a "resolução" do conflito de paradigmas daquilo que de fato é (o mecânico) e aquilo que se deseja (a intenção), quando programamos em baixo nível, nós estamos amarrados aos "bits" de ponta a ponta, tendo que passar cada caminho que será percorrido pelo hardware, cada operação, com a lógica da máquina, ficando muitas das vezes abstrato a nós humanos, as linguagens de alto nível tem como principio ocultar toda complexidade, permitindo que a gente se concentre na intenção, naquilo que queremos fazer, e não como devemos fazer (a parte mecânica)
+É a aplicação perfeita da metalinguagem na engenharia, criamos um universo de regras rigoroso (a sintaxe), que trata a ambiguidade da comunicação humana, mas que usa palavras da nossa linguagem natural (If, While, For) facilitando nossa interpretação, mas nada é de graça, ao meu ver isso de fato tira o controle, definindo "caixas genéricas", o que de certa forma, nos limita enquanto programadores
+
+4 - O grande trunfo da Correspondência de Curry-Howard foi provar que programar e provar teoremas são, no fundo a mesma coisa, nesse contexto, precisamos mudar radicalmente a forma como entendemos o conceito de tipagem, em linguagens de programação comuns, o tipo se refere apenas a classificar dados na memória (informar à máquina se uma variável é um texto, número inteiro ou booleano). No entanto, na Correspondência de Curry-Howard, o tipo é elevado ao status literal de um Teorema Lógico.
+
+Quando você define a tipagem de uma função, estipulando que ela recebe uma variável do "Tipo A" e retorna uma saída do "Tipo B", o sistema não lê isso apenas como um fluxo de dados, ele lê isso como uma proposição matemática (Se A é verdadeiro, então B é verdadeiro). O código que digitamos dentro da função é a demonstração passo a passo desse teorema. Se o compilador aprova a sua tipagem e o código roda sem erros, você não apenas criou um software; você construiu uma prova física irrefutável de que aquele teorema é verdadeiro.
+
+Porém, ao analisar essa arquitetura sob a ótica dos limites lógicos (Gödel e Turing), percebemos uma limitação artificial imposta ao sistema. Para que linguagens de prova matemática (como Coq ou Agda) garantam que todo programa seja uma prova verdadeira, elas aplicam uma metalinguagem que proíbe loops infinitos — afinal, um loop infinito seria o equivalente a tentar provar algo eternamente, caracterizando uma "falsa prova". Para mim, isso é uma trapaça kk. Ao proibir a complexidade que gera o paradoxo, essas linguagens tornam-se incapazes de modelar soluções complexas da vida real. Além disso, não combatem o Problema da Parada (o que poderia ser um ótimo resultado kk), o compilador desse tipo de linguagem pode barrar (gerar erro) programas perfeitamente funcionais apenas por não conseguir deduzir a sua parada imediatamente, constatando que, mesmo nas linguagens formalmente mais perfeitas, não conseguimos escapar da incompletude.
