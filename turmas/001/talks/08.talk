@@ -1,0 +1,116 @@
+--------------------------------------
+talk: 008
+title: teoria ingênua de conjuntos V
+--------------------------------------
+
+> linguagem "semi-formal":
+    > alfabeto:
+        > conjuntos: `x, y, z, ...`
+        > pertencimento: `x in y`
+        > delimitadores: `(`, `)`
+        > separadores: `,`
+        > construtores: `{`, `}`
+    > gramática:
+        ...
+    > semi-formal:
+        > axioma:
+            > para todo `p(x)`, existe o conjunto `y = {x, p(x) is True}`
+        > paradoxos do tipo Russell
+
+> tuplas:
+    > `(x, y, z, ...) := {x, {y}, {{z}}, ...}`
+    > `Prod(x, y) = {(x0, y0), (x0 in x) and (y0 in y) }`
+
+> subconjunto:
+    > conjunto `x`
+        > subconjunto `y <= x`:
+            > se `z in y -> z in x`
+        > predicado `p(x0 in x)`
+
+> relação entre conjuntos:
+    > conjuntos `x, y`
+    > `Prod(x, y)`
+    > `R <= Prod(x, y)` é relação entre `x` e `y`
+
+> tipos de relações:
+    > ordem parcial:
+        > reflexiva
+        > anti-simétrica
+        > transitiva
+        > exemplo:
+            > "ser subconjunto" é uma relação de ordem parcial
+    > equivalência:
+        > reflexiva
+        > simétrica
+        > transitiva
+        > exemplo:
+            > "ser igual" é uma relação de equivalência
+
+> funções:
+    > sejam `x,y` conjuntos
+    > seja `R <= Prod(x, y)`
+    > fala-se que `R` é uma _função_ entre `x` e `y` se:
+        > dado `x0 in x`:
+        > se existem `y0, y1 in y`  tal que:
+            > `(x0, y0) in R`
+            > `(x0, y1) in R`
+        > então `y0 = y1`.
+    > em outras palavras:
+        > para cada elemento `x0 in x` tal que
+            > existe `y0 in y`
+            > tal que `(x0, y0) in R`
+        > o elemento `y0` é único.
+> notação:
+    > `(x0, R(x0)) := (x0, y0)`
+
+> notação:
+    > `R <= Prod(x, y)`
+    > `R: x -> y`
+
+> nomenclatura:
+    > `R: x -> y`, fala-se  que `R` é _função_ (ou _mapeamento_) entre `x` e `y` 
+    > `x` é o _domínio_ de `R`
+        > denotado  por `Dom(R)`
+    > `y` é o _codomínio_ de `R`
+        > denotado por `Cod(R)`
+
+> Se `R: Dom(R) -> Cod(R)`  é uma função:
+    > `Img(R) <= Cod(R)`
+    > `Img(R) = {y0 in Cod(R), existe x0 in Dom(R), (x0, y0) in R}`
+
+> suponha `R: Dom(R) -> Cod(R)` seja uma relação reflexiva:
+    > `Cod(R) = Dom(R)`
+    > para todo `x0 in Dom(R)`, `(x0, R(x0)) in R`
+        > `(x0, x0) in R`
+        > para todo `x0 in Dom(R)`, `R(x0) == x0`
+
+> enquanto relação, uma função é reflexiva se, e somente se, ela é a "função identidade".
+    > `id: x -> x`
+    > `(x0, id(x0)) == (x0, x0)`
+    > `id(x0) == x0`
+
+> tipos funções:
+    > função _injetiva_:
+        > `(x0, R(x0))` e `(x1, R(x1))`
+        > se `R(x0) == R(x1)`, então `x0 == x1`
+        > isto é, se o domínio `Dom(R)` está em correspondência perfeita com a imagem `Img(R)`
+
+    > função _sobrejetiva_:
+        > para todo `y0 in Cod(R)`, existe `x0 in Dom(R)`, `(x0, y0) in R`
+        > `Img(R) == Cod(R)`
+
+    > função _bijetiva_:
+        > é _injetiva_ e _sobrejetiva_
+        > isto é, o domínio `Dom(R)` está em correspondência perfeita com o codomínio `Cod(R)`
+
+------------
+tasks:
+    > sejam `x,y` conjuntos e `R <= Prod(x, y)` uma função. Sob quais condições `R` é:
+        > reflexiva?
+        > simétrica?
+        > anti-simétrica?
+        > transitiva?
+        > uma relação de ordem parcial?
+        > uma relação de equivalência?
+    > ser injetiva, sobrejetiva ou reflexiva está relacionado com ser reflexiva, simétrica, etc?
+-----------
