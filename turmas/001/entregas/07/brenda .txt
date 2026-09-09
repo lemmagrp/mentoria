@@ -1,0 +1,119 @@
+Relação
+
+Uma relação é uma forma de estabelecer uma correspondência entre elementos ou objetos. No caso dos conjuntos, podemos definir uma relação através de uma condição que diz quando dois conjuntos estão relacionados.
+
+R={(x,y) ∈ X × Y ∣ P(x,y)}
+
+Exemplo: 
+
+Dado dois conjuntos :
+
+X={1,2,3}
+
+e
+
+Y={2,3,4}
+
+Produto cartesiano X × Y={(1,2),(1,3),(1,4),(2,2),(2,3),(2,4),(3,2),(3,3),(3,4)}
+
+Passando pelo P(x,y): x < y
+
+R={(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)} ---> No final, temos a relação R
+
+---------------------------------------------------
+Propriedade reflexiva
+
+A relação R é reflexiva quando todo elemento do conjunto está relacionado consigo mesmo.
+
+Dado um conjunto A, A = {1,2,3}
+
+Para todo x ∈ A, xRx
+
+1R1
+2R2
+3R3
+
+Se todos forem verdadeiros, a relação é reflexiva.
+
+-------------------------------------------
+Propriedade simétrica
+
+Se "a" se relaciona com "b", logo "b" se relaciona com "a"
+
+aRb -> bRa
+
+--------------------------------------------
+Propriedade assimétrica
+
+Se x  está relacionado com  y, então y não pode estar relacionado com  x.
+
+xRy -> not(yRx)
+
+Exemplo :
+
+A={1,2,3}
+
+xRy --> x < y
+
+1R2 -- not(2R1)
+1R3 -- not(3R1)
+2R3 -- not(3R2)
+
+not(1R1)
+not(2R2)
+not(3R3)
+
+--------------------------------------------------
+Propriedade antissimétrica
+
+Se a se relaciona com b e b se relaciona com a, então a e b são o mesmo elemento.
+
+(A in B) and (B in A) ---> Logo, A = B
+
+
+---------------------------------------------
+Propriedade transitiva
+
+Se x se relaciona com  y, e y se relaciona com  z, então  x  deve se relacionar com  z.
+
+xRy e yRz -> xRz
+
+Exemplo :
+
+A = {1,2,3}
+
+xRy --> x < y --- 1 < 2
+yRz --> y < z ---- 2 < 3
+
+Logo,
+
+xRz --> x < z --- 1 < 3
+
+----------------------------------------------------
+Propriedades que caracterizam uma relação de igualdade entre conjuntos
+
+Igualdade: "dois conjuntos são iguais quando possuem exatamente os mesmos elementos"
+
+reflexiva -> Todo conjunto é igual a ele mesmo.
+
+simétrica -> Se A é igual a B, logo B tem que ser igual a A
+
+transitiva -> Se A é igual a B e B é igual a C, logo A é igual a C
+
+
+
+-----------------------------------------------------
+Propriedades que caracterizam uma relação de inclusão entre conjuntos
+
+Inclusão : 
+
+reflexiva -> Um conjunto está contido nele mesmo
+
+antissimétrica -> Se dois conjuntos estão contidos um no outro, logo precisam ser iguais
+
+transitiva -> se A está contido em B e B está contido em C, logo A está contido em C
+
+
+
+
+-------------------------------------------
