@@ -1,0 +1,47 @@
+Caio Henrique Granado
+
+tasks:
+> ler sobre tipos de relações:
+    > relação reflexiva
+    > relação transitiva
+    > relação simétrica
+    > relação antissimétrica
+> quais as propriedades acima caracterizam:
+    > a noção de igualdade entre conjuntos
+    > a relação de "ser subconjunto de"
+
+
+
+1. Tipos de Relações:
+
+Relação Reflexiva: O conceito do espelho, matematicamente, para todo  x , temos que  xRx  é Verdadeiro. 
+Todo elemento obrigatoriamente se relaciona consigo mesmo, vulgarmente dizendo, é uma ideia circular, como a frase "toda pessoa tem a mesma idade que ela própria".
+
+Relação Simétrica: Aqui é a via de mão dupla, como todo relacionamento saúdavel kkk o que vale para a ida, tem que valer para a volta, se  xRy  é Verdadeiro, então  yRx  
+obrigatoriamente também é Verdadeiro.
+
+Relação Antissimétrica: Essa aqui é a ideia de hierarquia, a via de mão dupla é terminantemente proibida entre elementos diferentes, algo como "ser chefe de": se o João é 
+chefe da Maria, e a Maria é chefe do João, isso só é logicamente possível se João e Maria forem a exata mesma pessoa, ou seja, se  xRy  e  yRx  são verdadeiros simultaneamente,
+então obrigatoriamente  x = y .
+
+Relação Transitiva: A famosa reação em cadeia, que pula etapas, se  xRy  e  yRz  são Verdadeiros, então obrigatoriamente  xRz  também é, como a regra de "ser descendente de",
+se sou descendente do meu pai, e ele do meu avô, logo sou descendente do meu avô.
+
+2. Caracterizando as propriedades:
+
+2.1 A noção de igualdade entre conjuntos ( A = B ), passando ela pela nossa "máquina de testes":
+É Reflexiva? Sim ( A = A ).
+É Simétrica? Sim, se  A  tem as mesmas coisas que  B ,  B  tem as mesmas coisas que  A .
+É Transitiva? Sim, se  A = B  e  B = C , então  A = C.
+É Antissimétrica? Sim, de forma trivial, se  A = B  e  B = A , logo  A = B .
+Por gabaritar Reflexividade, Simetria e Transitividade, a igualdade é o que chamamos de Relação de Equivalência. Ela nos garante que dois elementos podem ser tratados como o mesmíssimo
+objeto no sistema lógico.
+2.2 A relação de "ser subconjunto de" aqui a ideia é que "tudo o que mora em A, também mora em B" (mas B pode ter coisas a mais).
+É Reflexiva? Sim, pois tudo que mora em  A  está em  A .
+É Simétrica? Não! Se o conjunto de Cachorros é subconjunto de Mamíferos, isso não significa que Mamíferos seja subconjunto de Cachorros, a ida não garante a volta.
+É Transitiva? Sim. Se Paulistas são Brasileiros e Brasileiros são Sul-Americanos, logo Paulistas são Sul-Americanos.
+É Antissimétrica? Sim! E essa é a parte mais bonita, se provarmos que  A ⊆ B  (tudo de A está em B) e  B ⊆ A  (tudo de B está em A), a única conclusão lógica possível é que ninguém
+tem "coisas a mais", logo obrigatoriamente  A = B .
+Essa é, inclusive, a técnica mais usada para provar igualdade de conjuntos.
+Por falhar na Simetria e gabaritar Reflexividade, Antissimetria e Transitividade, essa é classificada como uma Relação de Ordem. 
+Ela não diz que as coisas são iguais, mas sim que podem ser empilhadas como caixas dentro de caixas.
