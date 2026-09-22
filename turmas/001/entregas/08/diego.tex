@@ -1,0 +1,668 @@
+% !TeX program = pdflatex
+% Compile com \documentclass[handout]{beamer} para a versão com as demonstrações completas.
+\documentclass[10pt]{beamer}
+
+\usetheme{default}
+\usecolortheme{seagull}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{theorems}[numbered]
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+
+\setbeamertemplate{qed symbol}{$\blacksquare$}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Rodapé com a seção corrente e o número do slide.
+\setbeamertemplate{footline}{%
+	\hfill{\scriptsize\usebeamercolor[fg]{structure}\insertsection\qquad\insertframenumber\,/\,\inserttotalframenumber}\hspace*{2ex}\vspace{1.2ex}%
+}
+
+% Pausas. \passo revela o bloco seguinte no próximo passo do frame.
+% Ele usa o mesmo contador de <+->, então pode ser misturado com
+% \uncover<+->{...} e \item<+-> sem numeração manual dos slides.
+% \onslide<.-> mostra o que vem a seguir junto com o último passo.
+\newcommand{\passo}{\onslide<+->}
+
+\newcommand{\diag}[1]{\Delta_{#1}}
+\newcommand{\inv}[1]{{#1}^{-1}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Img}{\operatorname{Img}}
+\newcommand{\Dom}{\operatorname{Dom}}
+\newcommand{\Cod}{\operatorname{Cod}}
+% Composição em ordem de diagrama. Troque por \circ se preferir o símbolo usual.
+\newcommand{\comp}{\mathbin{\fatsemi}}
+
+\newcommand{\ida}{\textbf{($\Rightarrow$)}\ }
+\newcommand{\volta}{\textbf{($\Leftarrow$)}\ }
+\newcommand{\ordemnota}{%
+	\smallskip
+	{\footnotesize Lembrete: em $R \comp S$ aplica-se $R$ primeiro.}%
+}
+
+\newtheorem{prop}{Proposição}
+\newtheorem{cor}{Corolário}
+
+\newcommand{\relunit}{0.44cm}
+\definecolor{relhlcolor}{RGB}{176,48,48}
+
+\tikzset{
+	relpic/.style   = {baseline=(current bounding box.center),
+		x=\relunit, y=-\relunit},
+	relcell/.style  = {draw=black!35, line width=0.3pt},
+	reldot/.style   = {circle, fill=black!80, inner sep=0pt, minimum size=4.2pt},
+	rellab/.style   = {font=\scriptsize, inner sep=1pt},
+	relhl/.style    = {draw=relhlcolor, line width=0.9pt}
+}
+
+\newcommand{\reldraw}[2]{%
+	\foreach \row [count=\i] in {#1} {%
+		\xdef\relnrows{\i}%
+		\foreach \e [count=\j] in \row {%
+			\xdef\relncols{\j}%
+			\draw[relcell] (\j-1,\i-1) rectangle (\j,\i);
+			\ifnum\e>0 \node[reldot] at (\j-0.5,\i-0.5) {}; \fi
+		}%
+	}%
+	#2%
+}
+
+\newcommand{\relmat}[4][]{%
+	\begin{tikzpicture}[relpic]
+		\reldraw{#4}{#1}
+		\foreach \l [count=\i] in {#2} {\node[rellab,anchor=east]  at (-0.18,\i-0.5) {\l};}
+		\foreach \l [count=\j] in {#3} {\node[rellab,anchor=north] at (\j-0.5,\relnrows+0.18) {\l};}
+	\end{tikzpicture}%
+}
+
+\newcommand{\relgrid}[2][]{%
+	\begin{tikzpicture}[relpic]
+		\reldraw{#2}{#1}
+	\end{tikzpicture}%
+}
+
+\newcommand{\hlrow}[1]{\draw[relhl] (0,#1-1) rectangle (\relncols,#1);}
+\newcommand{\hlcol}[1]{\draw[relhl] (#1-1,0) rectangle (#1,\relnrows);}
+\newcommand{\hlcell}[2]{\draw[relhl] (#2-1,#1-1) rectangle (#2,#1);}
+
+\newcommand{\reldiag}{\draw[black!40,dashed,line width=0.3pt] (0,\relnrows) -- (\relncols,0);}
+
+\newcommand{\relaxes}{%
+	\node[rellab,anchor=south east] at (-0.10,-0.12) {$\Cod(R)$};
+	\node[rellab,anchor=north west] at (\relncols+0.10,\relnrows+0.12) {$\Dom(R)$};
+}
+
+% Cadeia das quatro caixas encaixadas.
+\newcommand{\cadeia}{%
+	\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+		\draw[rounded corners] (0,0) rectangle (5.6,3.2);
+		\node[anchor=north east] at (5.45,3.14) {$\Dom(R)$};
+		\draw[rounded corners] (0.3,0.25) rectangle (5.3,2.6);
+		\node[anchor=north east] at (5.15,2.54) {$\Img(R) \cap \Dom(R)$};
+		\draw[rounded corners] (0.6,0.5) rectangle (5.0,2.0);
+		\node[anchor=north east] at (4.85,1.94) {$\Fix(R \comp R)$};
+		\draw[rounded corners] (0.9,0.75) rectangle (4.7,1.4);
+		\node[anchor=north east] at (4.55,1.34) {$\Fix(R)$};
+	\end{tikzpicture}%
+}
+
+\title{Entrega 8}
+\date{}
+
+\begin{document}
+	
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}{Definições}
+		\passo
+		Fixe conjuntos $x$ e $y$ e uma relação $R \subseteq x \times y$. Escrevemos
+		\[
+		\Dom(R) := x, \qquad \Cod(R) := y,
+		\]
+		para o domínio e o contradomínio de $R$. Eles fazem parte da estrutura, pois o conjunto de pares $R$
+		sozinho não os determina.
+		\medskip
+		
+		\passo
+		$R$ é chamada de \emph{função} quando, para todo $a \in \Dom(R)$, existe um único
+		$b \in \Cod(R)$ com $aRb$.
+		
+		\medskip
+		\passo
+		\begin{align*}
+			\diag{z} &:= \{(a,a) : a \in z\}, \\
+			\inv{R}  &:= \{(b,a) : aRb\}, \\
+			R \comp S &:= \{(a,c) : \exists b, \big(aRb \wedge bSc\big)\}, \\
+			\Img(R) &:= \{b : \exists a, aRb\}, \\
+			\Fix(R) &:= \{a : aRa\}.
+		\end{align*}
+		
+		\medskip
+		\passo
+		O símbolo $\fatsemi$ marca a \textbf{ordem de diagrama}: em $R \comp S$ aplica-se $R$ primeiro.
+		Em particular $\diag{\Dom(R)} \comp R = R = R \comp \diag{\Cod(R)}$.
+	\end{frame}
+	
+	\begin{frame}{Diagrama de uma relação finita}
+		\passo
+		Uma relação $R$ pode ser representada por gráfico cartesiano, com $\Dom(R)$ nas colunas e
+		$\Cod(R)$ nas linhas.
+		Para $\Dom(R) = \{1,2,3\}$, $\Cod(R) = \{a,b,c\}$ e $R = \{(1,b),(2,a),(3,b)\}$:
+		\begin{center}
+			\uncover<+->{$R = {}$\relmat[\relaxes]{$c$,$b$,$a$}{1,2,3}{{0,0,0},{1,0,1},{0,1,0}}}
+			\qquad
+			\uncover<+->{$\inv{R} = {}$\relmat{3,2,1}{$a$,$b$,$c$}{{0,1,0},{1,0,0},{0,1,0}}}
+		\end{center}
+		
+		\medskip
+		\passo
+		Cada definição tem uma leitura no diagrama:
+		\begin{itemize}
+			\item<+-> $\inv{R}$ permuta os eixos,
+			\item<+-> $\Img(R)$ é o conjunto dos rótulos das linhas não vazias,
+			\item<+-> $\Fix(R)$ é o conjunto dos elementos sobre a diagonal,
+			\item<+-> o desenho de $R \comp S$ é o produto booleano do desenho de $S$ pelo de $R$.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Restrição funcional}
+		\passo
+		De agora em diante $R$ é uma função. Da definição extraímos os dois únicos instrumentos
+		usados adiante:
+		\begin{itemize}
+			\item<+-> \textbf{existência}: para todo $a \in \Dom(R)$ há $b \in \Cod(R)$ com $aRb$,
+			\item<+-> \textbf{unicidade}: se $aRb$ e $aRc$, então $b = c$.
+		\end{itemize}
+		
+		\medskip
+		\passo
+		Juntos, eles dizem que cada coluna do desenho tem exatamente um elemento, que é a leitura
+		usual de gráfico. Tome $\Dom(R) = \{1,2\}$ e $\Cod(R) = \{a,b,c\}$:
+		\begin{center}
+			\begin{tabular}{ccc}
+				\uncover<+->{\begin{tabular}{@{}c@{}}
+						\relmat[\hlcol{1}]{$c$,$b$,$a$}{1,2}{{0,0},{0,0},{0,1}} \\[4pt]
+						\small falha a existência
+				\end{tabular}} &
+				\uncover<+->{\begin{tabular}{@{}c@{}}
+						\relmat[\hlcol{1}]{$c$,$b$,$a$}{1,2}{{0,1},{1,0},{1,0}} \\[4pt]
+						\small falha a unicidade
+				\end{tabular}} &
+				\uncover<+->{\begin{tabular}{@{}c@{}}
+						\relmat{$c$,$b$,$a$}{1,2}{{0,0},{1,0},{0,1}} \\[4pt]
+						\small função
+				\end{tabular}}
+			\end{tabular}
+		\end{center}
+		
+		\medskip
+		\passo
+		Toda demonstração adiante consiste em encontrar o ponto certo para aplicar a unicidade.
+	\end{frame}
+	
+	\begin{frame}{Definições algébricas das propriedades}
+		\passo
+		\begin{center}
+			\begin{tabular}{ll}
+				\multicolumn{2}{l}{\textbf{Tipo heterogêneo} (fazem sentido com $\Dom(R) \neq \Cod(R)$)}\\[2pt]
+				total (à esquerda) & $\diag{\Dom(R)} \subseteq R \comp \inv{R}$ \\
+				injetiva       & $R \comp \inv{R} \subseteq \diag{\Dom(R)}$ \\
+				sobrejetiva    & $\diag{\Cod(R)} \subseteq \inv{R} \comp R$ \\
+				unívoca        & $\inv{R} \comp R \subseteq \diag{\Cod(R)}$ \\[8pt]
+				\multicolumn{2}{l}{\textbf{Tipo homogêneo}}\\[2pt]
+				reflexiva      & $\diag{\Dom(R)} \subseteq R$ \\
+				simétrica      & $\inv{R} \subseteq R$ \\
+				anti-simétrica & $R \cap \inv{R} \subseteq \diag{\Dom(R)}$ \\
+				transitiva     & $R \comp R \subseteq R$
+			\end{tabular}
+		\end{center}
+		
+		\medskip
+		\passo
+		Uma relação é função quando é total e unívoca.
+	\end{frame}
+	
+	\begin{frame}{O que será provado}
+		\passo
+		Para $R$ função, as quatro propriedades homogêneas se reduzem a
+		\begin{center}
+			\begin{tabular}{ll}
+				reflexiva      & $\Dom(R) \subseteq \Fix(R)$ \\
+				simétrica      & $\Dom(R) \subseteq \Fix(R \comp R)$ \\
+				anti-simétrica & $\Fix(R \comp R) \subseteq \Fix(R)$ \\
+				transitiva     & $\Img(R) \cap \Dom(R) \subseteq \Fix(R)$
+			\end{tabular}
+		\end{center}
+		
+		\medskip
+		\passo
+		As quatro comparam termos de uma mesma cadeia, que vale para qualquer relação:
+		\[
+		\Fix(R) \subseteq \Fix(R \comp R) \subseteq \Img(R) \cap \Dom(R) \subseteq \Dom(R).
+		\]
+		\passo
+		A primeira inclusão é $aRa \Rightarrow a\,(R \comp R)\,a$. Na segunda, de $aRb$ e $bRa$ vem
+		$a \in \Dom(R)$ e $a \in \Img(R)$. A terceira é imediata.
+		
+		\medskip
+		\passo
+		Cada propriedade colapsa um trecho da cadeia. Reflexividade colapsa tudo e dá
+		$R = \diag{\Dom(R)}$, simetria colapsa os três termos externos e torna $R$ uma involução de
+		$\Dom(R)$. As duas últimas são bem mais fracas, e só dizem algo sobre $\Img(R) \cap \Dom(R)$.
+	\end{frame}
+	
+	\begin{frame}{Composição com a inversa}
+		\passo
+		\begin{align*}
+			a\,(R \comp \inv{R})\,a' &\iff \exists b,\ (aRb \wedge a'Rb), \\
+			b\,(\inv{R} \comp R)\,b' &\iff \exists a,\ (aRb \wedge aRb').
+		\end{align*}
+		\passo
+		A primeira relaciona duas colunas que dividem uma linha, a segunda duas linhas que dividem
+		uma coluna.
+		
+		\medskip
+		\passo
+		Totalidade e injetividade são condições sobre $R \comp \inv{R}$. A primeira pede ao menos
+		um elemento em cada coluna, a segunda pede que duas colunas nunca dividam uma linha, isto é,
+		no máximo um elemento por linha. Sobrejetividade e univocidade são as condições espelhadas
+		sobre $\inv{R} \comp R$.
+		
+		\medskip
+		\passo
+		Para $R$ função, $R \comp \inv{R}$ é a relação \emph{ter a mesma imagem}, e
+		$\inv{R} \comp R = \diag{\Img(R)}$:
+		\begin{center}
+			\uncover<+->{$R$\,\relmat{$c$,$b$,$a$}{1,2,3}{{0,0,0},{1,0,1},{0,1,0}}}
+			\;
+			\uncover<+->{$R \comp \inv{R}$\,\relmat[\reldiag]{3,2,1}{1,2,3}{{1,0,1},{0,1,0},{1,0,1}}}
+			\;
+			\uncover<+->{$\inv{R} \comp R$\,\relmat[\reldiag]{$c$,$b$,$a$}{$a$,$b$,$c$}{{0,0,0},{0,1,0},{1,0,0}}}
+		\end{center}
+		\onslide<.->
+		\ordemnota
+	\end{frame}
+	
+	\begin{frame}{Composição com ela mesma}
+		\passo
+		\[
+		a\,(R \comp R)\,c \iff \exists b,\ (aRb \wedge bRc).
+		\]
+		\passo
+		São os pares ligados por um caminho de dois passos. O ponto intermediário precisa ser ao
+		mesmo tempo imagem e ponto de partida, logo $R \comp R$ só tem conteúdo sobre
+		$\Img(R) \cap \Dom(R)$, e é vazia quando $\Dom(R)$ e $\Cod(R)$ são disjuntos.
+		
+		\medskip
+		\passo
+		Para $R$ função, $R \comp R$ é aplicar $R$ duas vezes, e é unívoca: a unicidade em $a$ fixa
+		o intermediário, e a unicidade nele fixa o resultado. Todos os seus pares partem de pontos
+		de $\Dom(R)$.
+		
+		\medskip
+		\passo
+		Com $\Dom(R) = \Cod(R) = \{1,2,3\}$ e $R = \{(1,2),(2,3),(3,3)\}$, dois passos levam tudo
+		para o ponto fixo $3$. Como $(1,3) \notin R$, essa função não é transitiva:
+		\begin{center}
+			\uncover<+->{$R$\,\relmat[\reldiag]{3,2,1}{1,2,3}{{0,1,1},{1,0,0},{0,0,0}}}
+			\qquad
+			\uncover<+->{$R \comp R$\,\relmat[\reldiag]{3,2,1}{1,2,3}{{1,1,1},{0,0,0},{0,0,0}}}
+		\end{center}
+		\onslide<.->
+		\ordemnota
+	\end{frame}
+	
+	\begin{frame}{Reflexividade}
+		\passo
+		\begin{prop}\label{prop:refl}
+			São equivalentes: $R$ é reflexiva, $\Dom(R) \subseteq \Fix(R)$, $R = \diag{\Dom(R)}$.
+			Nesse caso $\Dom(R) \subseteq \Cod(R)$.
+		\end{prop}
+		
+		\passo
+		\begin{proof}
+			As duas primeiras são a mesma frase, porque $\diag{\Dom(R)} \subseteq R$ diz que $aRa$
+			vale para todo $a \in \Dom(R)$. Delas para a terceira: se $aRb$, a unicidade em $a$,
+			comparada com $aRa$, dá $b = a$, donde $R \subseteq \diag{\Dom(R)}$, e a inclusão
+			contrária é a própria reflexividade. A volta é imediata. Por fim, de $aRa$ vem
+			$a \in \Cod(R)$.
+		\end{proof}
+		
+		\medskip
+		\begin{columns}[c]
+			\begin{column}{0.68\textwidth}
+				\uncover<+->{Uma função reflexiva é a inclusão $\Dom(R) \hookrightarrow \Cod(R)$. Em
+					particular ela é injetiva, e sobrejetiva exatamente quando $\Dom(R) = \Cod(R)$.}
+			\end{column}
+			\begin{column}{0.30\textwidth}
+				\begin{center}
+					\uncover<+->{\begin{tabular}{@{}c@{}}
+							\relmat[\hlrow{1}]{3,2,1}{1,2}{{0,0},{0,1},{1,0}} \\[4pt]
+							\scriptsize $\Dom(R) = \{1,2\}$ \\
+							\scriptsize $\Cod(R) = \{1,2,3\}$
+					\end{tabular}}
+				\end{center}
+			\end{column}
+		\end{columns}
+	\end{frame}
+	
+	\mode<handout>{
+		\begin{frame}{Reflexividade, demonstração completa}
+			A equivalência entre $\diag{\Dom(R)} \subseteq R$ e $\Dom(R) \subseteq \Fix(R)$ é a
+			definição de $\Fix$, porque ambas dizem que $aRa$ vale para todo $a \in \Dom(R)$.
+			
+			\medskip
+			Suponha $R$ reflexiva e seja $aRb$. Como também $aRa$, a unicidade em $a$ dá $b = a$, logo
+			$(a,b) \in \diag{\Dom(R)}$ e $R \subseteq \diag{\Dom(R)}$. A inclusão
+			$\diag{\Dom(R)} \subseteq R$ é a hipótese, portanto $R = \diag{\Dom(R)}$.
+			
+			\medskip
+			Reciprocamente, se $R = \diag{\Dom(R)}$, então $\diag{\Dom(R)} \subseteq R$ e $R$ é
+			reflexiva.
+			
+			\medskip
+			Para a última afirmação, dado $a \in \Dom(R)$ vale $aRa$, e como
+			$R \subseteq \Dom(R) \times \Cod(R)$ isso dá $a \in \Cod(R)$. Logo
+			$\Dom(R) \subseteq \Cod(R)$.
+		\end{frame}
+	}
+	
+	\begin{frame}{Simetria}
+		\passo
+		\begin{prop}\label{prop:sim}
+			São equivalentes: (i) $R$ é simétrica, (ii) $\Dom(R) \subseteq \Fix(R \comp R)$,
+			(iii) $R \comp R = \diag{\Dom(R)}$.
+			Nesse caso $\inv{R} = R$, $\Img(R) \subseteq \Dom(R) \subseteq \Cod(R)$, e $R$ é uma
+			involução de $\Dom(R)$.
+		\end{prop}
+		
+		\passo
+		\begin{proof}
+			(i)\,$\Rightarrow$\,(ii): dado $a \in \Dom(R)$, tome $b$ com $aRb$, e de $bRa$ vem
+			$a\,(R \comp R)\,a$.
+			(ii)\,$\Rightarrow$\,(iii): $R \comp R$ é unívoca e parte de $\Dom(R)$, logo um ponto
+			fixo em cada $a$ esgota a relação.
+			(iii)\,$\Rightarrow$\,(i): de $aRb$ e $a\,(R \comp R)\,a$, a unicidade em $a$ identifica
+			o intermediário com $b$.
+		\end{proof}
+		
+		\begin{columns}[c]
+			\begin{column}{0.46\textwidth}
+				\uncover<+->{\footnotesize O desenho é uma matriz de permutação involutiva, simétrica pela diagonal.
+					A transposição de $1$ e $2$ mostra que simetria não força $R = \diag{\Dom(R)}$.\par}
+			\end{column}
+			\begin{column}{0.52\textwidth}
+				\begin{center}
+					\uncover<+->{$R$\,\relmat[\reldiag]{3,2,1}{1,2,3}{{0,0,1},{1,0,0},{0,1,0}}}
+					\quad
+					\uncover<+->{$R \comp R$\,\relmat[\reldiag]{3,2,1}{1,2,3}{{0,0,1},{0,1,0},{1,0,0}}}
+				\end{center}
+			\end{column}
+		\end{columns}
+	\end{frame}
+	
+	\mode<handout>{
+		\begin{frame}{Simetria, demonstração completa}
+			Suponha $R$ simétrica. Dado $a \in \Dom(R)$, tome $b$ com $aRb$ pela existência. A
+			simetria dá $bRa$, logo $a\,(R \comp R)\,a$ e $\Dom(R) \subseteq \Fix(R \comp R)$.
+			
+			\medskip
+			Suponha $\Dom(R) \subseteq \Fix(R \comp R)$ e seja $a\,(R \comp R)\,c$, digamos $aRb$ e
+			$bRc$. Então $a \in \Dom(R)$, logo há $b'$ com $aRb'$ e $b'Ra$. A unicidade em $a$ dá
+			$b' = b$ e a unicidade em $b$ dá $c = a$. Junto com a hipótese, isso é
+			$R \comp R = \diag{\Dom(R)}$.
+			
+			\medskip
+			Suponha $R \comp R = \diag{\Dom(R)}$ e seja $aRb$. De $a\,(R \comp R)\,a$ há $b'$ com
+			$aRb'$ e $b'Ra$, e a unicidade em $a$ dá $b' = b$, donde $bRa$ e $R$ é simétrica.
+			
+			\medskip
+			Para o resto, de $aRb$ vem $bRa$, logo $b \in \Dom(R)$ e $a \in \Img(R) \subseteq \Cod(R)$,
+			o que dá $\Img(R) \subseteq \Dom(R) \subseteq \Cod(R)$. Invertendo $\inv{R} \subseteq R$
+			obtemos $R \subseteq \inv{R}$, logo $\inv{R} = R$, e $R \comp R = \diag{\Dom(R)}$ faz de
+			$R$ uma involução de $\Dom(R)$, em particular uma bijeção de $\Dom(R)$ sobre $\Dom(R)$.
+		\end{frame}
+	}
+	
+	\begin{frame}{Anti-simetria}
+		\passo
+		É a única das quatro que usa $R \cap \inv{R}$, os pares recíprocos:
+		\[
+		a\,(R \cap \inv{R})\,b \iff (aRb \wedge bRa).
+		\]
+		\passo
+		No desenho, é o que sobrevive à interseção de $R$ com sua reflexão pela diagonal. Ela sempre
+		contém $\diag{\Fix(R)}$, e a condição pede que nada mais sobreviva.
+		
+		\passo
+		\begin{prop}\label{prop:anti}
+			$R$ é anti-simétrica se, e só se, $\Fix(R \comp R) \subseteq \Fix(R)$.
+		\end{prop}
+		
+		\passo
+		\begin{proof}
+			\volta Sejam $aRb$ e $bRa$. Então $a \in \Fix(R \comp R) \subseteq \Fix(R)$, logo $aRa$, e
+			a unicidade em $a$ dá $b = a$.
+			\ida Seja $a \in \Fix(R \comp R)$, digamos $aRb$ e $bRa$. A anti-simetria dá $a = b$,
+			donde $aRa$.
+		\end{proof}
+		
+		\begin{columns}[c]
+			\begin{column}{0.62\textwidth}
+				\uncover<+->{\small A condição proíbe $a \neq b$ com $aRb$ e $bRa$. Ela vale vacuamente quando
+					$\Img(R) \cap \Dom(R) = \varnothing$.\par}
+			\end{column}
+			\begin{column}{0.36\textwidth}
+				\begin{center}
+					\begin{tabular}{cc}
+						\uncover<+->{\begin{tabular}{@{}c@{}}
+								\relmat[\reldiag\hlcell{1}{1}\hlcell{2}{2}]{2,1}{1,2}{{1,0},{0,1}} \\[3pt]
+								\scriptsize proibido
+						\end{tabular}} &
+						\uncover<+->{\begin{tabular}{@{}c@{}}
+								\relmat[\reldiag]{2,1}{1,2}{{0,0},{1,1}} \\[3pt]
+								\scriptsize permitido
+						\end{tabular}}
+					\end{tabular}
+				\end{center}
+			\end{column}
+		\end{columns}
+	\end{frame}
+	
+	\mode<handout>{
+		\begin{frame}{Anti-simetria, demonstração completa}
+			Suponha $\Fix(R \comp R) \subseteq \Fix(R)$ e sejam $aRb$ e $bRa$. Então
+			$a\,(R \comp R)\,a$, logo $a \in \Fix(R \comp R)$ e portanto $aRa$. A unicidade em $a$,
+			comparando $aRb$ com $aRa$, dá $b = a$. Assim $R \cap \inv{R} \subseteq \diag{\Dom(R)}$.
+			
+			\medskip
+			Reciprocamente, suponha $R$ anti-simétrica e seja $a \in \Fix(R \comp R)$. Há $b$ com
+			$aRb$ e $bRa$, logo $(a,b) \in R \cap \inv{R} \subseteq \diag{\Dom(R)}$, donde $a = b$ e
+			$aRa$.
+			
+			\medskip
+			Vale sempre $\diag{\Fix(R)} \subseteq R \cap \inv{R}$, porque $aRa$ dá o par recíproco
+			trivial. Sob anti-simetria a inclusão contrária também vale, e as duas juntas dão
+			$R \cap \inv{R} = \diag{\Fix(R)}$.
+		\end{frame}
+	}
+	
+	\begin{frame}{Transitividade}
+		\passo
+		\begin{prop}\label{prop:trans}
+			$R$ é transitiva se, e só se, $\Img(R) \cap \Dom(R) \subseteq \Fix(R)$.
+			Se além disso $\Img(R) \subseteq \Dom(R)$, isto equivale a $R \comp R = R$.
+		\end{prop}
+		
+		\passo
+		\begin{proof}
+			\ida De $aRb$ e $bRc$, a transitividade dá $aRc$, e a unicidade em $a$ dá $c = b$, donde
+			$bRb$.
+			\volta De $aRb$ e $bRc$ vem $b \in \Img(R) \cap \Dom(R)$, logo $bRb$, e a unicidade em $b$
+			dá $c = b$, donde $aRc$.
+		\end{proof}
+		
+		\medskip
+		\passo
+		A cadeia dá $\Fix(R) \subseteq \Img(R) \cap \Dom(R)$ sem hipótese alguma, logo sob
+		transitividade os elementos de $\Img(R) \cap \Dom(R)$ são exatamente os pontos fixos. No caso
+		$\Img(R) \subseteq \Dom(R)$, as funções transitivas são as idempotentes, isto é, as retrações
+		de $\Dom(R)$ sobre $\Fix(R)$.
+	\end{frame}
+	
+	\mode<handout>{
+		\begin{frame}{Transitividade, demonstração completa}
+			Seja $R$ transitiva e $b \in \Img(R) \cap \Dom(R)$. Tome $a$ com $aRb$ e, pela existência,
+			$c$ com $bRc$. A transitividade dá $aRc$ e a unicidade em $a$ dá $c = b$, logo $bRb$.
+			
+			\medskip
+			Reciprocamente, suponha $\Img(R) \cap \Dom(R) \subseteq \Fix(R)$ e sejam $aRb$ e $bRc$.
+			Então $b \in \Img(R) \cap \Dom(R)$, logo $bRb$, e a unicidade em $b$ dá $c = b$, donde
+			$aRc$.
+			
+			\medskip
+			Para a última afirmação, $R \comp R \subseteq R$ é a transitividade. Se $aRb$, então
+			$b \in \Dom(R)$ por hipótese, logo $bRb$ pelo que acabamos de ver, e portanto
+			$(a,b) \in R \comp R$. Assim $R \subseteq R \comp R$ e vale a igualdade.
+		\end{frame}
+	}
+	
+	\begin{frame}{Diagrama da transitividade}
+		\passo
+		A relação $R = \{(1,2),(2,3),(3,1)\}$ falha, porque os desenhos de $R$ e de
+		$R \comp R$ são disjuntos. Nenhum elemento cai sobre a diagonal.
+		\begin{center}
+			\uncover<+->{$R$\,\relmat[\reldiag]{3,2,1}{1,2,3}{{0,1,0},{1,0,0},{0,0,1}}}
+			\qquad
+			\uncover<+->{$R \comp R$\,\relmat[\reldiag]{3,2,1}{1,2,3}{{1,0,0},{0,0,1},{0,1,0}}}
+		\end{center}
+		
+		\medskip
+		\passo
+		Já $R = \{(1,1),(2,2),(3,1)\}$ é idempotente, com $\Fix(R) = \{1,2\}$. Os elementos ficam
+		confinados às linhas de $\Fix(R)$, e a coluna de cada ponto fora de $\Fix(R)$ aponta
+		para uma dessas linhas.
+		\begin{center}
+			\uncover<+->{$R$\,\relmat[\reldiag]{3,2,1}{1,2,3}{{0,0,0},{0,1,0},{1,0,1}}}
+			\qquad
+			\uncover<+->{$R \comp R$\,\relmat[\reldiag]{3,2,1}{1,2,3}{{0,0,0},{0,1,0},{1,0,1}}}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}{Resumo}
+		\passo
+		Cada propriedade colapsa um trecho da cadeia.
+		
+		\begin{columns}[c]
+			\begin{column}{0.42\textwidth}
+				\begin{center}\uncover<+->{\scalebox{0.82}{\cadeia}}\end{center}
+			\end{column}
+			\begin{column}{0.56\textwidth}
+				\small
+				\uncover<+->{\begin{tabular}{ll}
+						reflexiva & colapsa os quatro \\
+						simétrica & colapsa os três externos \\
+						anti-simétrica & colapsa os dois internos \\
+						transitiva & colapsa os três internos
+				\end{tabular}}
+				
+				\smallskip
+				\uncover<+->{As implicações se leem aqui. Reflexiva implica as outras três, e transitiva implica
+					anti-simétrica. Simétrica com anti-simétrica, ou com transitiva, devolve a
+					reflexividade.\par}
+			\end{column}
+		\end{columns}
+		
+		\smallskip
+		\passo
+		Os exemplos abaixo refutam as demais implicações:
+		\begin{center}
+			\uncover<+->{\scriptsize\setlength{\tabcolsep}{2pt}%
+				\begin{tabular}{lcccc}
+					& \relgrid[\reldiag]{{0,1},{1,0}} & \relgrid[\reldiag]{{1,0},{0,1}} &
+					\relgrid[\reldiag]{{0,0},{1,1}} & \relgrid[\reldiag]{{0,1,0},{1,0,0},{0,0,1}} \\[2pt]
+					& $\{(1,1),(2,2)\}$ & $\{(1,2),(2,1)\}$ & $\{(1,1),(2,1)\}$ & $\{(1,2),(2,3),(3,1)\}$ \\ \hline
+					reflexiva & \checkmark & & & \\
+					simétrica & \checkmark & \checkmark & & \\
+					anti-simétrica & \checkmark & & \checkmark & \checkmark \\
+					transitiva & \checkmark & & \checkmark & \\
+			\end{tabular}}
+		\end{center}
+		\onslide<.->
+		{\footnotesize As três primeiras em $\Dom(R) = \Cod(R) = \{1,2\}$, a última em
+			$\Dom(R) = \Cod(R) = \{1,2,3\}$.}
+	\end{frame}
+	
+	\begin{frame}{Ordem e equivalência}
+		\passo
+		Aqui, \emph{ordem parcial} significa reflexiva, anti-simétrica e transitiva, e
+		\emph{relação de equivalência} significa reflexiva, simétrica e transitiva. Nenhuma das
+		duas supõe $\Dom(R) = \Cod(R)$.
+		
+		\passo
+		\begin{cor}
+			São equivalentes: $R$ é ordem parcial, $R$ é equivalência, $R = \diag{\Dom(R)}$.
+		\end{cor}
+		
+		\passo
+		\begin{proof}
+			Ambas incluem reflexividade, que dá $R = \diag{\Dom(R)}$ pela
+			Proposição~\ref{prop:refl}, e $\diag{\Dom(R)}$ é ordem parcial e equivalência.
+		\end{proof}
+		
+		\medskip
+		\begin{columns}[c]
+			\begin{column}{0.58\textwidth}
+				\uncover<+->{A igualdade é a única relação de ordem que também é função, correspondendo à ordem discreta. É também a única relação de equivalência que é função, correspondendo à partição em singletons. Ordens e equivalências não triviais não são unívocas, e essa falha aparece nas colunas destacadas.\par}
+			\end{column}
+			\begin{column}{0.40\textwidth}
+				\begin{center}
+					\begin{tabular}{cc}
+						\uncover<+->{\begin{tabular}{@{}c@{}}
+								\relmat[\reldiag\hlcol{1}]{3,2,1}{1,2,3}{{1,1,1},{1,1,0},{1,0,0}} \\[3pt]
+								\scriptsize ordem $\leq$
+						\end{tabular}} &
+						\uncover<+->{\begin{tabular}{@{}c@{}}
+								\relmat[\reldiag\hlcol{1}]{3,2,1}{1,2,3}{{0,0,1},{1,1,0},{1,1,0}} \\[3pt]
+								\scriptsize equivalência
+						\end{tabular}}
+					\end{tabular}
+				\end{center}
+			\end{column}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{Injetividade e sobrejetividade}
+		\passo
+		Reflexividade e simetria forçam $\Img(R) \subseteq \Dom(R) \subseteq \Cod(R)$ e implicam
+		injetividade. Anti-simetria e transitividade valem vacuamente quando
+		$\Img(R) \cap \Dom(R) = \varnothing$, e não implicam nenhuma das duas.
+		
+		\passo
+		\begin{cor}
+			\begin{enumerate}
+				\item<+-> Reflexiva $\Rightarrow$ injetiva, e sobrejetiva se, e só se, $\Dom(R) = \Cod(R)$.
+				\item<+-> Simétrica $\Rightarrow$ injetiva, com $R$ bijeção de $\Dom(R)$ sobre $\Dom(R)$.
+				\item<+-> Simétrica e anti-simétrica, ou simétrica e transitiva, $\Rightarrow R = \diag{\Dom(R)}$.
+				\item<+-> Transitiva e injetiva, com $\Img(R) \subseteq \Dom(R)$, $\Rightarrow R = \diag{\Dom(R)}$.
+			\end{enumerate}
+		\end{cor}
+		
+		\passo
+		\begin{proof}
+			(1) é a Proposição~\ref{prop:refl}. Em (2), $\inv{R} = R$ dá
+			$R \comp \inv{R} = R \comp R = \diag{\Dom(R)}$.
+			Em (3), a simetria dá $\Dom(R) \subseteq \Fix(R \comp R)$, e tanto a anti-simetria quanto
+			a transitividade, esta via $\Fix(R \comp R) \subseteq \Img(R) \cap \Dom(R)$, dão
+			$\Fix(R \comp R) \subseteq \Fix(R)$, donde $\Dom(R) \subseteq \Fix(R)$.
+			Em (4), de $aRb$ com $b \in \Dom(R)$ vem $bRb$, e a injetividade dá $a = b$.
+		\end{proof}
+	\end{frame}
+	
+\end{document}
