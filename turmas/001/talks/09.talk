@@ -1,0 +1,101 @@
+--------------------------------------
+talk: 009
+title: gramáticas formais
+--------------------------------------
+
+> linguagem formal:
+    > alfabeto: _coleção_ `A`
+    > gramática: _coleção_ `G(A)` de palavras admissíveis contendo símbolos do alfabeto `A`
+
+> tendo desenvolvido teoria ingênua dos conjuntos
+    > linguagem formal:
+        > alfabeto: _conjunto_ `A`
+        > gramática: _conjunto_ `G(A)` de palavras admissíveis.
+            > subconjunto `G(A) <= K(A)` do conjunto de Kleene de `A`
+                > `K(A)` é o conjunto de todas as palavras com símbolos de `A`.
+
+> _o que é uma palavra?_
+    > uma palavra é uma _tupla finita_ de elementos de `A`.
+        > tupla: 
+            > maneira 1: `{x, {y}, {{z}}, ...}`, com `x,y,.. in A`
+            > maneira 2: 
+                > `f: Nat -> A`, com `Nat` sendo os naturais (gerador, sequência, tupla infinita)
+                > `f: Nat[n] -> A`, com `Nat[n] <= Nat` sendo o conjunto `{0, 1, ..., n}`
+                > `Tuple[A, n] := Func(Nat[n], A)`
+                    > palavras de tamanho `n` com símbolos em `A`.
+                
+> o conjunto de Kleene de `A` é o conjunto de todas as palavras com símbolos em `A`
+    > `K(A) = {f, f in Tuple[A, n] para algum n in Nat}`
+
+> gramática sobre o alfabeto `A` é subconjunto `G(A) <= K(A)`.
+    > alternativamente, `P: K(A) -> Bool`
+
+> _como construir gramáticas para um dado alfabeto?_
+    > listando as possíveis palavras:
+        > `A = {h, e, l, o}`
+        > `G(A) := {"hello"}`
+            > `hellooo`
+        > funciona para o caso de um número _finito_ de palavras.
+    > gerar as palavras através de algum processo.
+        > _gramáticas formais_.
+        
+> o conjunto `K(A)` vem com uma operação `+: Prod(K(A), K(A)) -> K(A)`
+    > `s, t in K(A)`, `s+t in K(A)`
+    > `null in K(A)`, palavras vazia
+        > `s + null == s`, `null + s == s`.
+        > `((s + t) + w) == (s + (t + w))`
+    > `K(A)` não é simplesmente um conjunto. Ele é um _monóide aditivo_.
+
+> para todo `n in Nat`, `K[A, n] := Tuple[A, n]` é o conjunto das palavras com `n` símbolos.
+    > `len: K(A) -> Nat`, `s = (x1, x2, ..., xn)`, `len(s) := n`.
+    > `len(s+t) == len(s)+len(t)`
+    > `len(null) == 0`
+    > `len` é um _morfismo_ entre monóides aditivos.
+
+> `K[A, 0] == {null}`
+> `K[A, 1] := {(x), x in A}`
+> `K[A, 2] := {(x, y), (x in A) and (y in A)}`
+
+----
+L = []
+for x in K[A, 1]:
+    for y in K[A, 1]:
+        z = x+y
+        L.append(z)
+----
+
+> se `s in K[A, 1]`, então `null+s+null == s`
+> se s in `K[A, 2]` então `null+t+w`, `t, w in K[A, 1]`
+> se `s in K[A, 3]` então `w1+t+w2`, `t,w1,w2 in K[A, 1]`
+> se `s in K[A, 4]` então `w1+t+w2`, `t in K[A, 1]`, `w1 in K[A, 2]` e `w2 in K[A, 1]`
+>...
+
+> para qualquer `n > 2` pode-se escrever
+    > `s == w1+t+w2`, com `t in K[A, 1]`
+
+> uma maneira de construir um subconjunto `G(A) <= K(A)`:
+    > escolha um subconjunto `N <= A`
+    > `G(A, N) <= K(A)` das palavras `s == w1+t+w2`, `t in N`
+    > é uma maneira muito engessada.
+
+
+> transformação entre as palavras de `G(A, N)`:
+    > `f: G(A,N) -> K(A)`
+    > `G(A, N, f) <= K(A)` são todas as palavras de `G(A, N)` junto daquelas `f(s), s in G(A, N)`
+    > `ext(f): K(A) -> K(A)`, `ext(f)(s) == null if s not in G(A, N)`.
+    > dado `ext(f) := F`, faz sentido escrever `F(F(s))`
+
+> seja `T <= Func(G(A, N), K(A))`
+    > se `f in T`, `ext(f): K(A)->K(A)`
+        > se `f,g in T`, `F := ext(f)` e `G := ext(g)`, faz sentido `F(G(s))`, `G(F(s))`
+
+> escolha um `x in N` especial.
+    > `G(A, N, T, x) <= K(A)` formado de todas as palavras `s in K(A)`  tais que
+        > `s = F(G(H(...(x))))`
+
+------------
+tasks:
+    > leiam sobre:
+        > gramáticas formais
+    > autômatos
+-----------
