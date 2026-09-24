@@ -1,0 +1,80 @@
+Caio Henrique Granado
+
+Tarefas:
+
+    1. sejam `x,y` conjuntos e `R <= Prod(x, y)` uma função. Sob quais condições `R` é:
+        1.1. reflexiva?
+        1.2. simétrica?
+        1.3. anti-simétrica?
+        1.4. transitiva?
+        1.5. uma relação de ordem parcial?
+        1.6. uma relação de equivalência?
+    2. ser injetiva, sobrejetiva ou reflexiva está relacionado com ser reflexiva, simétrica, etc?
+
+
+Respostas:
+
+Para avaliar as propriedades abaixo, não estamos cruzando universos ou conjuntos 
+distintos, mas sim analisando como os elementos de um único conjunto se 
+relacionam entre si. O "universo" aqui não é o conceito ingênuo que gerou o 
+Paradoxo de Russell, mas sim um conjunto real, seguro e bem definido - que pode 
+inclusive ser infinito, como os números inteiros. 
+
+Partindo dessa premissa, a condição fundamental é que o domínio seja exatamente 
+igual ao codomínio (X = Y). Estaremos avaliando uma função onde a entrada e a 
+saída habitam o mesmo espaço matemático.
+
+Obs: R não é apenas uma relação, mas sim uma função. Isso impõe uma trava de 
+exclusividade: para cada entrada x, a função só pode apontar para um único e 
+exclusivo destino.
+
+
+
+1. Sejam x,y conjuntos e R <= Prod(x, y) uma função. Sob quais condições R é:
+
+1.1. Reflexiva:
+    R: Todo elemento deve apontar para si mesmo. Como a função só possui "uma flecha" 
+    disponível (exclusividade), ela não pode apontar para mais nada. Logo, R tem que 
+    ser estritamente a Função Identidade (R(x) = x).
+
+1.2. Simétrica:
+   R: Exige uma via de mão dupla (A -> B implica B -> A). Para uma função fazer isso 
+   sem quebrar a exclusividade de saída, ela precisa desfazer sua própria operação. 
+   Logo, a função R deve ser a sua própria inversa (R(R(x)) = x).
+
+1.3. Anti-simétrica:
+   R: Proíbe a via de mão dupla entre elementos distintos. Se houver ida e volta, 
+   significa que A e B são o exato mesmo elemento. A função atua como um fluxo sem 
+   ciclos: o dado avança para um novo estado ou fica parado, mas jamais retorna à origem.
+
+1.4. Transitiva:
+   R: Se o caminho A -> B -> C existe, o atalho A -> C também deve existir. Porém, 
+   pela exclusividade da função, o elemento A não pode ter duas saídas distintas 
+   (B e C). Logo, B e C são obrigatoriamente iguais. Isso torna a função Idempotente 
+   (R(R(x)) = R(x)): o resultado é "congelado" e não se altera após a primeira execução.
+
+1.5. Uma relação de ordem parcial:
+   R: Precisa cumprir três requisitos simultâneos: ser Reflexiva, Anti-simétrica e 
+   Transitiva. Como a reflexividade consome toda a capacidade de apontamento da 
+   função, ela colapsa estruturalmente e obriga R a ser estritamente a Função Identidade.
+
+1.6. Uma relação de equivalência:
+   R: Precisa cumprir os requisitos de ser Reflexiva, Simétrica e Transitiva. 
+   Novamente, tornando-se refém da trava da reflexividade, a única saída matemática 
+   é que R seja estritamente a Função Identidade.
+
+
+
+2. Ser injetiva, sobrejetiva ou reflexiva está relacionado com ser reflexiva, 
+   simétrica, etc?
+   R: Sim, a estrutura lógica da relação dita a mecânica física do mapeamento 
+   (injeção/sobrejeção):
+
+   - Simetria: Garante a "ida e volta" exata para todos, forçando a função a 
+     ser perfeitamente Bijetiva.
+  
+   - Transitividade: Força o congelamento de múltiplos elementos no mesmo destino 
+     (efeito funil). Ao gerar colisões, destrói a injeção e a sobrejeção.
+  
+   - Reflexividade: Ao colapsar na Função Identidade, cria o cenário da 
+     Bijetividade perfeita, onde ninguém sobra e ninguém colide.
