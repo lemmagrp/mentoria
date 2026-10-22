@@ -1,0 +1,43 @@
+Caio Henrique Granado
+
+Tarefas:
+
+    1. Leiam sobre:
+        1.1. Gramáticas formais
+        1.2. Autômatos
+
+
+Respostas:
+
+1.1. Gramáticas Formais
+Uma gramática formal atua como o motor gerador abstrato de uma linguagem sobre um alfabeto A.
+Em vez de depender de uma listagem exaustiva e engessada de palavras, a gramática define o subconjunto de palavras 
+admissíveis G(A) ⊆ K(A) do fecho de Kleene estruturando regras de produção. Partindo de um elemento especial x 
+(frequentemente chamado de símbolo inicial ou axioma) contido em um subconjunto não-terminal N, a linguagem é 
+construída por transformações sucessivas a partir de um conjunto de regras T. 
+Quando aplicamos as extensões dessas funções, formamos cadeias admissíveis através de derivações lógicas como s = F(G(H(...(x)))).
+Esse processo dita dedutivamente a estrutura causal da linguagem, definindo a priori quais composições do monóide aditivo
+são válidas antes de qualquer validação mecânica.
+
+1.2. Autômatos
+Os autômatos representam a contraparte mecânica e empírica das gramáticas formais.
+Enquanto a gramática é um sistema gerador, o autômato é uma máquina de reconhecimento baseada em estados.
+Ele consome uma palavra de tamanho n, lendo os elementos contidos em K[A, n] símbolo por símbolo de forma estritamente sequencial.
+A cada entrada, o autômato abandona o estado anterior e transita para um novo estado com base no que acabou de "observar".
+Essa mecânica ecoa diretamente a epistemologia empírica de David Hume: o autômato não deduz grandes verdades ocultas nem exige
+conhecimento antecipado da estrutura completa, mas constrói sua "compreensão" (o estado final) baseando-se unicamente nas
+impressões contíguas e sucessivas da fita de dados. Se, após o consumo completo da tupla, a máquina repousar em um estado 
+designado como aceitação, o autômato atesta que a palavra pertence ao subconjunto G(A).
+
+A Dualidade Lógico-Mecânica
+Existe uma correspondência matemática inquebrável entre esses dois domínios, formalizada pela Hierarquia de Chomsky. 
+A complexidade do gerador dita exatamente a arquitetura do observador empírico necessário:
+
+- Gramáticas Regulares limitam a produção a regras lineares severas e são validadas por Autômatos Finitos, que possuem
+  memória zero além de seu estado atual.
+
+- Gramáticas Livres de Contexto permitem estruturas aninhadas e recursivas, exigindo Autômatos com Pilha, que adicionam
+  uma memória estruturada (LIFO) capaz de rastrear escopos e fechamentos.
+
+- Gramáticas Irrestritas representam a liberdade lógica total para computar qualquer transformação recursiva, o que só
+  pode ser processado e reconhecido pelo limite físico e teórico de uma Máquina de Turing.
