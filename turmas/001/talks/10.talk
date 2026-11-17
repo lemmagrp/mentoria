@@ -1,0 +1,110 @@
+--------------------------------------
+talk: 010
+title: funções parciais e multivalentes
+--------------------------------------
+
+> linguagem formal:
+    > alfabeto: _coleção_ `A`
+    > gramática: _coleção_ `G(A)` de palavras admissíveis contendo símbolos do alfabeto `A`
+
+> tendo desenvolvido teoria ingênua dos conjuntos
+    > linguagem formal:
+        > alfabeto: _conjunto_ `A`
+        > gramática: _conjunto_ `G(A)` de palavras admissíveis.
+            > subconjunto `G(A) <= K(A)` do conjunto de Kleene de `A`
+                > `K(A)` é o conjunto de todas as palavras com símbolos de `A`.
+
+> _o que é uma palavra?_
+    > uma palavra é uma _tupla finita_ de elementos de `A`.
+        > tupla: 
+            > maneira 1: `{x, {y}, {{z}}, ...}`, com `x,y,.. in A`
+            > maneira 2: 
+                > `f: Nat -> A`, com `Nat` sendo os naturais (gerador, sequência, tupla infinita)
+                > `f: Nat[n] -> A`, com `Nat[n] <= Nat` sendo o conjunto `{0, 1, ..., n}`
+                > `Tuple[A, n] := Func(Nat[n], A)`
+                    > palavras de tamanho `n` com símbolos em `A`.
+                
+> o conjunto de Kleene de `A` é o conjunto de todas as palavras com símbolos em `A`
+    > `K(A) = {f, f in Tuple[A, n] para algum n in Nat}`
+
+> gramática sobre o alfabeto `A` é subconjunto `G(A) <= K(A)`.
+    > alternativamente, `P: K(A) -> Bool` (mentira)
+
+> `X` um conjunto
+    > `S <= X` um subconjunto
+        > if `x in S`, então `x in X`.
+
+    > `Pow(X)`:
+        > `S in Pow(X)` iff `S <= X`.
+    
+    > `true[S]: S -> Bool`
+        > `true[S](x) is True`
+
+    > Uma _função característica_ para `S in Pow(X)` é uma função `f: X -> Bool`, tal que:
+        - se `x in S`, então `f(x) is true[S](x)`.
+
+    > `S in Pow(X)` é _decidível_, se admite alguma função característica.
+        > se ela existe, ela é única:
+            > `char[S]: X -> Bool`.
+
+    > `X` é _clássico_ se todo `S <= X` é decidível.
+        > A afirmação "todo conjunto é clássico" é equivalente à afirmação `not not True is True`.
+            > `not not True is True` é conhecido como _lei do terceiro excluído_.
+
+    > Lembrando:
+        > Uma _função_ (total) `f: X -> Y` é uma relação `R <= Prod(X, Y)` tal que:
+            > para todo  `x in X`, tem-se `(x, y) in R` para algum `y in Y` (totalidade)
+            > se `(x0, y) in R` e `(x1, y) in R`, então `x0 == x1`  (univalência)
+                > para todo elemento do domínio tem-se um único elemento do contradomínio.
+        
+        > Uma _função parcial_ `f: X -> Y` é uma relação `R <= Prod(X, Y)` tal que:
+            > se `(x0, y) in R` e `(x1, y) in R`, então `x0 == x1`  (univalência)
+                > para todo elemento do domínio no qual a função está definida, tem-se um único elemento do contradomínio.
+
+    > Seja `X` um conjunto.
+        > `S in Pow(X)`.
+            > `true[S]: S -> Bool`
+        > `char[S]: X -> Bool` existe enquanto função parcial.
+
+    > Uma linguagemm formal é:
+        > um  alfabeto `A`
+        > uma gramática `G(A) <= K(A)`.
+            > `G: K(A) -> Bool` função parcial
+
+        > gramáticas do tipo 0 na hierarquia de Chowsky:
+            > são Turing completas
+                > por conta do Problema da Parada
+                    > `G: K(A) -> Bool` não é função total
+ 
+    > `f: X -> Y`: função parcial.
+        > `Eff(f) <= X`: domínio efetivo
+            > `f(x)` faz sentido iff `x in Eff(f)`.
+        > escolha um elemento `0` tal que `0 not in Y`.
+            > `Maybe(Y, 0) := Coprod(Y, {0}) == Union(Y, 0)`
+        > `F: X -> Maybe(Y, 0)`
+            > `F(x) is f(x) if x in Eff(f)`
+            > `F(x) is 0 else`
+
+    > `F: X -> Maybe(Y, 0)`: função total
+        > `f: X -> Y`: função parcial
+            > `Eff(f) := {x in X, F(x) is not 0 }`
+            > `f(x) is F(x)`
+
+    > dar uma função parcial `f: X -> Y` é o mesmo que dar uma função total `F: X -> Maybe(Y)`.
+        > Maybe monad.
+
+    > Uma linguagem de programação sobre um alfabeto `A` é:
+        > uma função parcial `G: K(A) -> Bool`
+        > uma função total `G: K(A) -> Maybe(Bool)`
+            > `Maybe(Bool) := {True, False, Undefined}`
+                > Lógica trivalente.
+        
+------------
+tasks:
+    > mostrar que:
+        > se a função característica existe, então é única.
+    >  todo é conjunto é clássico iff vale a lei do terceiro excluído
+    > para todo `Y`, dados `0, 1`, tem-se `Maybe(Y, 0) =~ Maybe(Y, 1)`
+        > Escreve-se `Maybe(Y)`
+    > Para todos `X, Y` tem-se `PFunc(X, Y) =~ Func(X, Maybe(Y))`.
+-----------
